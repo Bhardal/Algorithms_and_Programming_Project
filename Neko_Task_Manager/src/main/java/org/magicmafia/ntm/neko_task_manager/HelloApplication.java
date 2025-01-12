@@ -1,5 +1,7 @@
 package org.magicmafia.ntm.neko_task_manager;
 
+import org.magicmafia.ntm.neko_task_manager.management.*;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
