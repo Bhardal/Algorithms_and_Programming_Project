@@ -9,7 +9,6 @@ public class Project {
     private String projectID;
     private LocalDateTime deadlines;
 
-    
     public Project(String projectName) {
         this.projectName = projectName;
     }

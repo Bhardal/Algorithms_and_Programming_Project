@@ -10,5 +10,8 @@ public class Task {
     public String comment;
     public String description;
 
+    public Task() {
+        
+    }
     
 }

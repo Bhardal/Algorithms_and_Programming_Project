@@ -7,6 +7,7 @@ public class Employee {
     private int employeeID;
     private ArrayList<Project> projectHistory;
 
+
     public Employee(int employeeID, String name) {
         this.employeeID = employeeID;
         this.name = name;
