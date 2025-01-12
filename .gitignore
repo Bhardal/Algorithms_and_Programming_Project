@@ -63,3 +63,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+Neko_Task_Manager/.mvn
