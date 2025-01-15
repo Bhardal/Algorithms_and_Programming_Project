@@ -16,20 +16,35 @@ public class MainMenuController {
             Parent root = fxmlLoader.load();
             Stage kanbanView = new Stage();
             kanbanView.setScene(new Scene(root));
-            kanbanView.setTitle("Calendar View");
+            kanbanView.setTitle("kanban");
             kanbanView.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void onCalendarViewButtonClick() throws IOException {
+    @FXML
+    public void onCalendarViewButtonClick() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/calendar-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage calendarView = new Stage();
             calendarView.setScene(new Scene(root));
-            calendarView.setTitle("Calendar View");
+            calendarView.setTitle("Calendar");
+            calendarView.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onProjectManagementViewButtonClick(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage calendarView = new Stage();
+            calendarView.setScene(new Scene(root));
+            calendarView.setTitle("Project Management");
             calendarView.show();
         } catch (IOException e) {
             e.printStackTrace();

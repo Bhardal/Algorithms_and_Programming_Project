@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.magicmafia.ntm.neko_task_manager.controller.KanbanViewController">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0">
+         <children>
+            <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="1080.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Project">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="New Project" />
+                        <MenuItem mnemonicParsing="false" text="Edit Project" />
+                        <MenuItem mnemonicParsing="false" text="Delete Project" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Tasks">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="New Task" />
+                        <MenuItem mnemonicParsing="false" text="Edit Task" />
+                        <MenuItem mnemonicParsing="false" text="Delete Task" />
+                        <MenuItem mnemonicParsing="false" text="Assigned Task to staff" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="View">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Filter by">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Project" />
+                              <MenuItem mnemonicParsing="false" text="Staff" />
+                              <MenuItem mnemonicParsing="false" text="Alphabetical" />
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1080.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="270.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="To-Do" textAlignment="CENTER" textFill="#071e47">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="270.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="In Progress" textAlignment="CENTER" textFill="#071e47">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="270.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="Done" textAlignment="CENTER" textFill="#071e47">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="270.0" style="-fx-border-style: solid hidden hidden hidden; -fx-border-color: #071e47;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="Discontinued" textAlignment="CENTER" textFill="#071e47">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
