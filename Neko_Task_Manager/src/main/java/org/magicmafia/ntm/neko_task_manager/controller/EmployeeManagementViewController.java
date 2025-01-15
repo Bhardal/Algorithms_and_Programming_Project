@@ -4,9 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,40 +14,52 @@ import javafx.stage.Stage;
 import org.magicmafia.ntm.neko_task_manager.management.Employee;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class EmployeeManagementViewController {
+public class EmployeeManagementViewController implements Initializable {
     @FXML
-    private TableView<Employee> employeeTableView;
+    public TableView<Employee> employeeTableView;
     @FXML
-    private TableColumn<Employee, Integer> employeeIDTableColumn;
+    public TableColumn<Employee, Integer> employeeIDTableColumn;
     @FXML
-    private TableColumn<Employee, String> employeeNameTableColumn;
+    public TableColumn<Employee, String> employeeNameTableColumn;
     @FXML
-    private ObservableList<Employee> employeeObservableList = FXCollections.observableArrayList();
+    public TableColumn<Employee, String> employeeProjectHistoryTableColumn;
+    @FXML
+    ObservableList<Employee> employeeInfos;
 
 
-    @FXML
-    private void initialize() {
-        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("Employee ID"));
-        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("Employee Name"));
+    public ObservableList<Employee> addEmployeeInfo(int ID, String name) {
+        employeeInfos = FXCollections.observableArrayList(
+            new Employee(ID, name)
+        );
+        return employeeInfos;
+    }
 
-        employeeTableView.setItems(employeeObservableList);
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("Employee ID"));
+//
+//        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("Employee Name"));
+//
+//        employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("Project History (past and present)"));
+//
+//        employeeTableView.getColumns().addAll(employeeIDTableColumn, employeeNameTableColumn, employeeProjectHistoryTableColumn);
+//
+//        employeeTableView.setItems(employeeInfos);
+
     }
 
 
     @FXML
-    public void setEmployeeInfo(String id, String name) {
-        Integer tempEmployeeID = Integer.valueOf(id);
-        employeeObservableList.add(new Employee(tempEmployeeID, name));
-    }
-
-
-    @FXML
-    private void onCreateEmployeeClick() {
+    public void onCreateEmployeeClick() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/create-employee-view.fxml"));
             Parent root = fxmlLoader.load();
+            CreateEmployeeViewController controller = fxmlLoader.getController();
+            controller.setEmployeeManagementViewController(this);
             Stage calendarView = new Stage();
             calendarView.setScene(new Scene(root));
             calendarView.setTitle("Employee Management");
