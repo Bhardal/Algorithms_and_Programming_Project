@@ -11,4 +11,4 @@ Status VARCHAR(50),
 DueDate datetime,
 Comment VARCHAR(500),
 Description VARCHAR(500)
-)
+);
