@@ -33,6 +33,16 @@ public class Management {
         return listEmployees;
     }
 
+    public ArrayList<Employee> deleteEmployee(int employeeID, String name) {
+        Employee tempEmployee = new Employee(employeeID, name);
+        for (Employee i : listEmployees) {
+            if (listEmployees.contains(tempEmployee)) {
+                listEmployees.remove(i);
+            }
+        }
+        return listEmployees;
+    }
+
 
     public void getListEmployee() {
         for (Employee i : listEmployees) {

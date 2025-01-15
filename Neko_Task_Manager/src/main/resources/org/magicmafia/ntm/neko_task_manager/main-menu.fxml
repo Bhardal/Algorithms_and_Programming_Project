@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.magicmafia.ntm.neko_task_manager.controller.MainMenuController">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="270.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #e0e3e8;" text="Kanban View" textFill="#47073e">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Button>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #e0e3e8;" text="Calendar View" textFill="#47073e">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="810.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #eff1f3;" text="X" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial" size="17.0" />
+                     </font>
+                  </Button>
+                  <Text fill="#071e47" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+                     <font>
+                        <Font name="Arial" size="50.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="50.0" top="100.0" />
+                     </VBox.margin>
+                  </Text>
+               </children></VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
