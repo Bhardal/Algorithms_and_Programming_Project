@@ -12,3 +12,11 @@ DueDate datetime,
 Comment VARCHAR(500),
 Description VARCHAR(500)
 );
+
+CREATE TABLE Projects (
+Employees table,
+Tasks table,
+ProjectName VARCHAR(50),
+ProjectID INT PRIMARY KEY,
+Deadline datetime
+)
