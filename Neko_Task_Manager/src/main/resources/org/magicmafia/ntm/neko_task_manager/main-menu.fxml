@@ -14,7 +14,7 @@
          <children>
             <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="270.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #e0e3e8;" text="Kanban View" textFill="#47073e">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onKanbanViewButtonClick" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #e0e3e8;" text="Kanban View" textFill="#47073e">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
@@ -25,7 +25,7 @@
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #e0e3e8;" text="Calendar View" textFill="#47073e">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCalendarViewButtonClick" prefHeight="35.0" prefWidth="175.0" style="-fx-background-color: #e0e3e8;" text="Calendar View" textFill="#47073e">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
@@ -40,11 +40,6 @@
             </VBox>
             <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="810.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #eff1f3;" text="X" textAlignment="CENTER">
-                     <font>
-                        <Font name="Arial" size="17.0" />
-                     </font>
-                  </Button>
                   <Text fill="#071e47" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
                      <font>
                         <Font name="Arial" size="50.0" />
