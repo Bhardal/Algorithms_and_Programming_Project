@@ -6,12 +6,12 @@ public class Task {
     public String name;
     public int priority;
     public String status;
-    public LocalDateTime duDate;
+    public LocalDateTime dueDate;
     public String comment;
     public String description;
 
     public Task() {
-        
+
     }
-    
+
 }
