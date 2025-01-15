@@ -44,6 +44,17 @@
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </padding>
                      <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button layoutX="30.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEmployeeManagementViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Employee Management" textFill="#47073e">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
                   </Button>

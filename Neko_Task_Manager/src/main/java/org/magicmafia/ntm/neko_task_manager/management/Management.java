@@ -3,24 +3,24 @@ package org.magicmafia.ntm.neko_task_manager.management;
 import java.util.ArrayList;
 
 public class Management {
-    public ArrayList<Employee> listEmployees;
-    public ArrayList<Project> listProject;
+    public static ArrayList<Employee> listEmployees;
+    public static ArrayList<Project> listProject;
 
 
     public Management() {
-        this.listEmployees = new ArrayList<>();
-        this.listProject = new ArrayList<>();
+        listEmployees = new ArrayList<>();
+        listProject = new ArrayList<>();
     }
     
 
-    public ArrayList<Employee> createEmployee(int employeeID, String name) {
+    public static ArrayList<Employee> createEmployee(int employeeID, String name) {
         Employee tempEmployee = new Employee(employeeID, name);
         listEmployees.add(tempEmployee);
         return listEmployees;
     }
 
 
-    public ArrayList<Employee> editEmployee(int oldEmployeeID, String oldName, int newEmployeeID, String newName) {
+    public static ArrayList<Employee> editEmployee(int oldEmployeeID, String oldName, int newEmployeeID, String newName) {
         Employee employee = new Employee(oldEmployeeID, oldName);
         Employee tempEmployee = new Employee(newEmployeeID, newName);
         int index =0;
@@ -33,7 +33,7 @@ public class Management {
         return listEmployees;
     }
 
-    public ArrayList<Employee> deleteEmployee(int employeeID, String name) {
+    public static ArrayList<Employee> deleteEmployee(int employeeID, String name) {
         Employee tempEmployee = new Employee(employeeID, name);
         for (Employee i : listEmployees) {
             if (listEmployees.contains(tempEmployee)) {
