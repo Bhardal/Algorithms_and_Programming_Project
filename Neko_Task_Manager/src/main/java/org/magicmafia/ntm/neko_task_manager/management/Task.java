@@ -9,9 +9,13 @@ public class Task {
     public LocalDateTime dueDate;
     public String comment;
     public String description;
+    private int taskID;
+    private static int IDs;
+
 
     public Task() {
-
+        IDs ++;
+        this.taskID = IDs;
     }
 
 }
