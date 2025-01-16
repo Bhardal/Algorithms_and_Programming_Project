@@ -46,17 +46,17 @@
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0">
                      <children>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
+                        <TextField fx:id="projectID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
                            <VBox.margin>
                               <Insets bottom="20.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
+                        <TextField fx:id="projectName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
                            <VBox.margin>
                               <Insets bottom="20.0" top="20.0" />
                            </VBox.margin>
                         </TextField>
-                        <DatePicker maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Choose a date">
+                        <DatePicker fx:id="projectDeadline" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Choose a date">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
