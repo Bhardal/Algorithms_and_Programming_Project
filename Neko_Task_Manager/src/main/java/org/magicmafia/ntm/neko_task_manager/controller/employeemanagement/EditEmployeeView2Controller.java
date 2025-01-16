@@ -1,14 +1,17 @@
 package org.magicmafia.ntm.neko_task_manager.controller.employeemanagement;
 
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class EditEmployeeView2Controller {
+public class EditEmployeeView2Controller implements Initializable {
     @FXML
     public TextField textFieldNewEmployeeName;
     @FXML
@@ -51,5 +54,21 @@ public class EditEmployeeView2Controller {
 
     public void setEditEmployeeViewController(EditEmployeeViewController editEmployeeViewController) {
         this.editEmployeeViewController = editEmployeeViewController;
+    }
+
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        String url = "jdbc:sqlite:mydatabase.db";
+        String sql = "SELECT Name FROM employees WHERE EmployeeID = "+OldEmployeeIDInt+";";
+        String name;
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement pstmt = conn.createStatement()    ;
+             ResultSet rs =  pstmt.executeQuery(sql)){
+            name = rs.getString("name");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
