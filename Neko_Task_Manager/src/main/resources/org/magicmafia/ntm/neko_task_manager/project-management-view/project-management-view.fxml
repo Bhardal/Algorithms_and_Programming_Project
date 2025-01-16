@@ -23,17 +23,17 @@
                <menus>
                   <Menu mnemonicParsing="false" text="Project">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="New Project" />
-                        <MenuItem mnemonicParsing="false" text="Edit Project" />
-                        <MenuItem mnemonicParsing="false" text="Delete Project" />
+                        <MenuItem fx:id="newProject" mnemonicParsing="false" onAction="#onNewProjectClick" text="New Project" />
+                        <MenuItem fx:id="editProject" mnemonicParsing="false" onAction="#onEditProjectClick" text="Edit Project" />
+                        <MenuItem fx:id="deleteProject" mnemonicParsing="false" onAction="#onDeleteProjectClick" text="Delete Project" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Tasks">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="New Task" />
-                        <MenuItem mnemonicParsing="false" text="Edit Task" />
-                        <MenuItem mnemonicParsing="false" text="Delete Task" />
-                        <MenuItem mnemonicParsing="false" text="Assigned Task to staff" />
+                        <MenuItem fx:id="newTask" mnemonicParsing="false" onAction="#onNewTaskClick" text="New Task" />
+                        <MenuItem fx:id="editTask" mnemonicParsing="false" onAction="#onEditTaskClick" text="Edit Task" />
+                        <MenuItem fx:id="deleteTask" mnemonicParsing="false" onAction="#onDeleteTaskClick" text="Delete Task" />
+                        <MenuItem fx:id="assignTaskToStaff" mnemonicParsing="false" onAction="#onAssignTaskToStaffClick" text="Assigned Task to staff" />
                      </items>
                   </Menu>
                </menus>
