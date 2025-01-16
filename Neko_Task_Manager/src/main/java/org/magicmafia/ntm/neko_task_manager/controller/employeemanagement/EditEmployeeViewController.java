@@ -27,21 +27,12 @@ public class EditEmployeeViewController {
             a.show();
         }else {
             int OldEmployeeIDInt = Integer.parseInt(oldEmployeeIDText);
-
-            String url = "jdbc:sqlite:mydatabase.db";
-            String sql = "DELETE FROM employees WHERE EmployeeID = (?); INSERT INTO Employees(name, EmployeeID, Projects) VALUES(?, ?, ?)";
-            try (Connection conn = DriverManager.getConnection(url);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setInt(1, OldEmployeeIDInt);
-                pstmt.setString(2, "newEmployeeNameText");
-                pstmt.setInt(3, OldEmployeeIDInt);
-                pstmt.setString(4, "ProjectList");
-                pstmt.executeUpdate();
-                System.out.println("Data updated.");
+            try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/employee-management-view/edit-employee-2-view.fxml"));
                 Parent root = fxmlLoader.load();
                 EditEmployeeView2Controller controller = fxmlLoader.getController();
                 controller.setEditEmployeeViewController(this);
+                controller.setOldEmployeeIDInt(OldEmployeeIDInt);
                 Stage editEmployeeView = new Stage();
                 editEmployeeView.setScene(new Scene(root));
                 editEmployeeView.setTitle("Edit Employee");
@@ -55,7 +46,7 @@ public class EditEmployeeViewController {
             Stage stage = (Stage) OKButton.getScene().getWindow();
             stage.close();
         }
-        
+
     }
 
     public void setEmployeeManagementViewController(EmployeeManagementViewController employeeManagementViewController) {
