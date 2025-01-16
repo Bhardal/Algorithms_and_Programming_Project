@@ -14,8 +14,8 @@ public class DatabaseConnection {
         }
 
         String sql = "CREATE TABLE IF NOT EXISTS Employees ("
-                + " Name VARCHAR(50) NOT NULL,"
                 + " EmployeeID INT PRIMARY KEY,"
+                + " Name VARCHAR(50) NOT NULL,"
                 + " Projects MEDIUMTEXT);";
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
@@ -25,8 +25,8 @@ public class DatabaseConnection {
         }
 
         sql = "CREATE TABLE IF NOT EXISTS Projects ("
-            + " ProjectName VARCHAR(50) NOT NULL,"
             + " ProjectID INT PRIMARY KEY,"
+            + " ProjectName VARCHAR(50) NOT NULL,"
             + " Employees MEDIUMTEXT,"
             + " Tasks MEDIUMTEXT,"
             + " Deadline datetime);";
@@ -39,8 +39,8 @@ public class DatabaseConnection {
         }
 
         sql = "CREATE TABLE IF NOT EXISTS Tasks ("
-                + " TaskName VARCHAR(50) NOT NULL,"
                 + " TaskID INT PRIMARY KEY,"
+                + " TaskName VARCHAR(50) NOT NULL,"
                 + " Priority INT,"
                 + " Status VARCHAR(50),"
                 + " Deadline datetime,"
