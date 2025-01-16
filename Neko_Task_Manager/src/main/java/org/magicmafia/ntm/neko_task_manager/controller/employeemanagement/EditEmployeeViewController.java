@@ -44,7 +44,7 @@ public class EditEmployeeViewController {
             Stage stage = (Stage) closeButton.getScene().getWindow();
 
             String url = "jdbc:sqlite:mydatabase.db";
-            String sql = "DELETE FROM employees WHERE employee_id = (?); INSERT INTO Employees(name, EmployeeID, Projects) VALUES(?, ?, ?)";
+            String sql = "DELETE FROM employees WHERE EmployeeID = (?); INSERT INTO Employees(name, EmployeeID, Projects) VALUES(?, ?, ?)";
             try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, OldEmployeeIDInt);

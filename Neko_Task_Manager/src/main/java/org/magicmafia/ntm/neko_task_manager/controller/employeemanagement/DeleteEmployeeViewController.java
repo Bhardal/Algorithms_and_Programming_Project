@@ -31,7 +31,7 @@ public class DeleteEmployeeViewController {
             int employeeIDInt = Integer.parseInt(employeeIDText);
 
             String url = "jdbc:sqlite:mydatabase.db";
-            String sql = "DELETE FROM employees WHERE employee_id = (?);";
+            String sql = "DELETE FROM employees WHERE EmployeeID = (?);";
             try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, employeeIDInt);
