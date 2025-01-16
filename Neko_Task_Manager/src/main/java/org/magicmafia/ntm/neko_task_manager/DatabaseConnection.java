@@ -16,14 +16,15 @@ public class DatabaseConnection {
         String sql = "CREATE TABLE IF NOT EXISTS Employees ("
                 + " Name VARCHAR(50) NOT NULL,"
                 + " EmployeeID INT PRIMARY KEY,"
-                + " Projects MEDIUMTEXT);"
-                + "CREATE TABLE IF NOT EXISTS Projects ("
-                + " ProjectName VARCHAR(50) NOT NULL,"
-                + " ProjectID INT PRIMARY KEY,"
-                + " Employees MEDIUMTEXT,"
-                + " Tasks MEDIUMTEXT,"
-                + " Deadline datetime);"
-                + "CREATE TABLE IF NOT EXISTS Tasks ("
+                + " Projects MEDIUMTEXT);";
+        try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Table Employees created.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sql = "CREATE TABLE IF NOT EXISTS Tasks ("
                 + " TaskName VARCHAR(50) NOT NULL,"
                 + " TaskID INT PRIMARY KEY,"
                 + " Priority INT,"
@@ -36,7 +37,21 @@ public class DatabaseConnection {
 
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
-            System.out.println("Tables created.");
+            System.out.println("Table Tasks created.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sql = "CREATE TABLE IF NOT EXISTS Projects ("
+            + " ProjectName VARCHAR(50) NOT NULL,"
+            + " ProjectID INT PRIMARY KEY,"
+            + " Employees MEDIUMTEXT,"
+            + " Tasks MEDIUMTEXT,"
+            + " Deadline datetime);";
+
+        try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Table Projects created.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
