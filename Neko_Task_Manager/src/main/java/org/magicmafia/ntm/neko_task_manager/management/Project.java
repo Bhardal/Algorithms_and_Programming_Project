@@ -1,15 +1,16 @@
 package org.magicmafia.ntm.neko_task_manager.management;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Project {
-    private Employee listStaff;
-    protected Task listTask;
     private String projectName;
-    private String projectID;
-    private LocalDateTime deadlines;
+    private int projectID;
+    private Date deadlines;
 
-    public Project(String projectName) {
+    public Project(String projectName, int projectID, Date deadlines) {
         this.projectName = projectName;
+        this.projectID = projectID;
+        this.deadlines = deadlines;
     }
 }

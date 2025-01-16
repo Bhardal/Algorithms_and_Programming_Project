@@ -1,16 +1,23 @@
 package org.magicmafia.ntm.neko_task_manager.controller.projectmanagement;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.magicmafia.ntm.neko_task_manager.management.Project;
 
 import java.io.IOException;
+import java.sql.*;
 
-public class ProjectManagementViewController {
+public class ProjectManagementViewController{
     @FXML
     public MenuItem newProject;
     @FXML
@@ -27,6 +34,33 @@ public class ProjectManagementViewController {
     public MenuItem assignTaskToStaff;
     @FXML
     public Button backButton;
+    @FXML
+    public ObservableList<Project> projectList;
+
+
+    @FXML
+    public ObservableList<Project> updateProjectInfo() {
+        String url = "jdbc:sqlite:mydatabase.db";
+        String sql = "SELECT ProjectName, ProjectID, Deadline FROM Projects";
+        String name;
+        int projectIDTemp;
+        Date deadline;
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement pstmt = conn.createStatement();
+             ResultSet rs =  pstmt.executeQuery(sql)){
+            while (rs.next()) {
+                name = rs.getString("ProjectName");
+                projectIDTemp = rs.getInt("ProjectID");
+                deadline = rs.getDate("Deadline");
+
+                projectList.add(new Project(name, projectIDTemp, deadline));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return projectList;
+    }
+
 
     @FXML
     public void onNewProjectClick() {
@@ -147,5 +181,20 @@ public class ProjectManagementViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void updateProjectTable() {
+        TableView<Project> projectTableView = new TableView<>();
+        TableColumn<Project, Integer> projectIDTableColumn = new TableColumn<>("Project ID");
+        projectIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("projectIDTemp"));
+        TableColumn<Project, String> projectNameTableColumn = new TableColumn<>("Project Name");
+        projectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("projectIDTemp"));
+        TableColumn<Project, String> projectDeadlineTableColumn = new TableColumn<>("Project Deadline");
+        projectDeadlineTableColumn.setCellValueFactory(new PropertyValueFactory<>("projectIDTemp"));
+
+        projectTableView.getColumns().addAll(projectIDTableColumn, projectNameTableColumn, projectDeadlineTableColumn);
+
+        projectList = updateProjectInfo();
     }
 }
