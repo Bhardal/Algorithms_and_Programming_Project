@@ -16,11 +16,27 @@ public class DatabaseConnection {
         String sql = "CREATE TABLE IF NOT EXISTS Employees ("
                 + " Name VARCHAR(50) NOT NULL,"
                 + " EmployeeID INT PRIMARY KEY,"
-                + " Projects MEDIUMTEXT);";
+                + " Projects MEDIUMTEXT);"
+                + "CREATE TABLE IF NOT EXISTS Projects ("
+                + " ProjectName VARCHAR(50) NOT NULL,"
+                + " ProjectID INT PRIMARY KEY,"
+                + " Employees MEDIUMTEXT,"
+                + " Tasks MEDIUMTEXT,"
+                + " Deadline datetime);"
+                + "CREATE TABLE IF NOT EXISTS Tasks ("
+                + " TaskName VARCHAR(50) NOT NULL,"
+                + " TaskID INT PRIMARY KEY,"
+                + " Priority INT,"
+                + " Status VARCHAR(50),"
+                + " Deadline datetime,"
+                + " Comment VARCHAR(500),"
+                + " Description VARCHAR(500),"
+                + " FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID),"
+                + " FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID));";
 
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
-            System.out.println("Table created.");
+            System.out.println("Tables created.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
