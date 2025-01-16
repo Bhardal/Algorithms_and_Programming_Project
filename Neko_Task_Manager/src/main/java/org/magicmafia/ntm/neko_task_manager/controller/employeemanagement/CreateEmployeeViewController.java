@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.sql.*;
 
 public class CreateEmployeeViewController {
     @FXML
@@ -35,6 +36,19 @@ public class CreateEmployeeViewController {
         }else {
             int employeeIDInt = Integer.parseInt(employeeIDText);
             employeeManagementViewController.addEmployeeInfo(employeeIDInt, employeeNameText);
+
+            String url = "jdbc:sqlite:mydatabase.db";
+            String sql = "INSERT INTO Employees(name, EmployeeID) VALUES(?, ?)";
+            try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, employeeNameText);
+                pstmt.setInt(2, employeeIDInt);
+                pstmt.executeUpdate();
+                System.out.println("Data inserted.");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();
         }
