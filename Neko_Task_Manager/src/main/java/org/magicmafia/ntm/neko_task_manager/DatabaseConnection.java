@@ -14,9 +14,9 @@ public class DatabaseConnection {
         }
 
         String sql = "CREATE TABLE IF NOT EXISTS Employees ("
-                + " EmployeeID INT PRIMARY KEY,"
-                + " Name VARCHAR(50) NOT NULL,"
-                + " Projects MEDIUMTEXT);";
+                   + " EmployeeID INT PRIMARY KEY,"
+                   + " Name VARCHAR(50) NOT NULL,"
+                   + " Projects MEDIUMTEXT);";
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
             System.out.println("Table Employees created.");
@@ -39,15 +39,17 @@ public class DatabaseConnection {
         }
 
         sql = "CREATE TABLE IF NOT EXISTS Tasks ("
-                + " TaskID INT PRIMARY KEY,"
-                + " TaskName VARCHAR(50) NOT NULL,"
-                + " Priority INT,"
-                + " Status VARCHAR(50),"
-                + " Deadline datetime,"
-                + " Comment VARCHAR(500),"
-                + " Description VARCHAR(500),"
-                + " FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID),"
-                + " FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID));";
+            + " TaskID INT PRIMARY KEY,"
+            + " TaskName VARCHAR(50) NOT NULL,"
+            + " Priority INT,"
+            + " Status VARCHAR(50),"
+            + " Deadline datetime,"
+            + " Comment VARCHAR(500),"
+            + " Description VARCHAR(500),"
+            + " ProjectID INT,"
+            + " EmployeeID INT,"
+            + " FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID),"
+            + " FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID));";
 
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
