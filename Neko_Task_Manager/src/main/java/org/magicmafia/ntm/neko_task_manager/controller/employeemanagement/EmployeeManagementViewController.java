@@ -41,18 +41,33 @@ public class EmployeeManagementViewController implements Initializable {
         String sql = "SELECT Name, EmployeeID, Projects FROM Employees;";
         ArrayList<String> names = new ArrayList<String>();
         ArrayList<Integer> employeeIDs = new ArrayList<Integer>();
-        ArrayList<String> projects = new ArrayList<String>();
+        ArrayList<String> projectIDs = new ArrayList<String>();
+        ArrayList<String> projectNames = new ArrayList<String>();
         try (Connection conn = DriverManager.getConnection(url);
              Statement pstmt = conn.createStatement();
              ResultSet rs =  pstmt.executeQuery(sql)){
             while (rs.next()) {
                 names.add(rs.getString("Name"));
                 employeeIDs.add(rs.getInt("EmployeeID"));
-                projects.add(rs.getString("Projects"));
-                );
+                projectIDs.add(rs.getString("Projects"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+
+        String sql2;
+        for (String workedProjectsList : projectIDs) {
+            String[] workedProjectIDs = workedProjectsList.split(",");
+            for (String id : workedProjectIDs) {
+                sql2 = "SELECT ProjectName FROM Projects WHERE ProjectID = " + id + ";";
+                try (Connection conn = DriverManager.getConnection(url);
+                     Statement pstmt = conn.createStatement();
+                     ResultSet rs =  pstmt.executeQuery(sql2)){
+                    projectNames.add(rs.getString("ProjectName"));
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
     }
 
