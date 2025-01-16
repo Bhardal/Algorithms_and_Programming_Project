@@ -29,7 +29,7 @@ public class DatabaseConnection {
             + " ProjectName VARCHAR(50) NOT NULL,"
             + " Employees MEDIUMTEXT,"
             + " Tasks MEDIUMTEXT,"
-            + " Deadline datetime);";
+            + " Deadline date);";
 
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
@@ -43,7 +43,7 @@ public class DatabaseConnection {
             + " TaskName VARCHAR(50) NOT NULL,"
             + " Priority INT,"
             + " Status VARCHAR(50),"
-            + " Deadline datetime,"
+            + " Deadline date,"
             + " Comment VARCHAR(500),"
             + " Description VARCHAR(500),"
             + " ProjectID INT,"

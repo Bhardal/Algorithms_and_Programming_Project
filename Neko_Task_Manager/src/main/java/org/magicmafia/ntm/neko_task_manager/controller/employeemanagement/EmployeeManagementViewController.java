@@ -72,7 +72,7 @@ public class EmployeeManagementViewController implements Initializable {
                 }
             }
         }
-        // ??? Regarde pour faire en sorte de parse les valeurs de la list dans le tableau
+        // ??? Regarde pour faire en sorte de parse les valeurs de la liste dans le tableau
 
         return employeeInfos;
     }
