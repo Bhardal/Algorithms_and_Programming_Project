@@ -35,10 +35,12 @@ public class EmployeeManagementViewController implements Initializable {
     public Button backButton;
 
 
-    public void UpdateEmployeeInfo() {
-        employeeInfos = FXCollections.observableArrayList();
+    public ObservableList<String> UpdateEmployeeInfo() {
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "SELECT Name, EmployeeID, Projects FROM Employees;";
+        String name;
+        int employeeIDTemp;
+        String project;
         ArrayList<String> names = new ArrayList<String>();
         ArrayList<Integer> employeeIDs = new ArrayList<Integer>();
         ArrayList<String> projectIDs = new ArrayList<String>();
@@ -50,6 +52,7 @@ public class EmployeeManagementViewController implements Initializable {
                 names.add(rs.getString("Name"));
                 employeeIDs.add(rs.getInt("EmployeeID"));
                 projectIDs.add(rs.getString("Projects"));
+                // ??? Ajouter dans la list employeeInfos les infos Name, ID et projects
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -69,6 +72,9 @@ public class EmployeeManagementViewController implements Initializable {
                 }
             }
         }
+        // ??? Regarde pour faire en sorte de parse les valeurs de la list dans le tableau
+
+        return employeeInfos;
     }
 
 
@@ -77,7 +83,7 @@ public class EmployeeManagementViewController implements Initializable {
         employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<String, Integer>("Employee ID"));
         employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<String, String>("Employee Name"));
         employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("Project History (past and present)"));
-        employeeTableView.setItems(employeeInfos);
+//        employeeTableView.setItems(this.employeeInfos);
     }
 
 
