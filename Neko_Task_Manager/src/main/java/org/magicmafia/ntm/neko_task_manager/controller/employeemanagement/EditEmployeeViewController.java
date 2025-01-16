@@ -55,6 +55,7 @@ public class EditEmployeeViewController {
             Stage stage = (Stage) OKButton.getScene().getWindow();
             stage.close();
         }
+        
     }
 
     public void setEmployeeManagementViewController(EmployeeManagementViewController employeeManagementViewController) {
