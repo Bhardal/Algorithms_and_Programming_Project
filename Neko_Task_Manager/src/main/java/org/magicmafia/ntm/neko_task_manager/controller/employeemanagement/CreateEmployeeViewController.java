@@ -47,7 +47,7 @@ public class CreateEmployeeViewController {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-            employeeManagementViewController.addEmployeeInfo(employeeIDInt);
+            employeeManagementViewController.UpdateEmployeeInfo();
 
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();

@@ -35,17 +35,22 @@ public class EmployeeManagementViewController implements Initializable {
     public Button backButton;
 
 
-    public void addEmployeeInfo(int OldEmployeeIDInt) {
+    public void UpdateEmployeeInfo() {
         employeeInfos = FXCollections.observableArrayList();
         String url = "jdbc:sqlite:mydatabase.db";
-        String sql = "SELECT Name, EmployeeID FROM Employees WHERE EmployeeID = "+OldEmployeeIDInt+";";
-        String name = "this is the name of the person";
+        String sql = "SELECT Name, EmployeeID, Projects FROM Employees;";
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<Integer> employeeIDs = new ArrayList<Integer>();
+        ArrayList<String> projects = new ArrayList<String>();
         try (Connection conn = DriverManager.getConnection(url);
              Statement pstmt = conn.createStatement();
              ResultSet rs =  pstmt.executeQuery(sql)){
-            name = rs.getString("Name");
-            System.out.println(name);
-            System.out.println(OldEmployeeIDInt);
+            while (rs.next()) {
+                names.add(rs.getString("Name"));
+                employeeIDs.add(rs.getInt("EmployeeID"));
+                projects.add(rs.getString("Projects"));
+                );
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
