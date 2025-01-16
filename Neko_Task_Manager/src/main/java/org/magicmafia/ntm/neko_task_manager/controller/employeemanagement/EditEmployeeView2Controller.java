@@ -18,7 +18,7 @@ public class EditEmployeeView2Controller implements Initializable {
     public ObservableList<String> projectList;
     @FXML
     public Button closeButton;
-    private int OldEmployeeIDInt;
+    public static int OldEmployeeIDInt;
     private EditEmployeeViewController editEmployeeViewController;
 
     @FXML
@@ -29,6 +29,7 @@ public class EditEmployeeView2Controller implements Initializable {
             a.setContentText("Please enter a correct employee Name.");
             a.show();
         }else {
+            String ProjectList = String.join(",", projectList);
             String url = "jdbc:sqlite:mydatabase.db";
             String sql = "DELETE FROM employees WHERE EmployeeID = (?); INSERT INTO Employees(name, EmployeeID, Projects) VALUES(?, ?, ?)";
             try (Connection conn = DriverManager.getConnection(url);
@@ -60,15 +61,17 @@ public class EditEmployeeView2Controller implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         String url = "jdbc:sqlite:mydatabase.db";
-        String sql = "SELECT Name FROM employees WHERE EmployeeID = "+OldEmployeeIDInt+";";
-        String name;
+        String sql = "SELECT Name, EmployeeID FROM Employees WHERE EmployeeID = "+this.OldEmployeeIDInt+";";
+        String name = "this is the name of the person";
         try (Connection conn = DriverManager.getConnection(url);
              Statement pstmt = conn.createStatement()    ;
              ResultSet rs =  pstmt.executeQuery(sql)){
-            name = rs.getString("name");
+            name = rs.getString("Name");
+            System.out.println(name);
+            System.out.println(this.OldEmployeeIDInt);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
+        textFieldNewEmployeeName.setText(name);
     }
 }

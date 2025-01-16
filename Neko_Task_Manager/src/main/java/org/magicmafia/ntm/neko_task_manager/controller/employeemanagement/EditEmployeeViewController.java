@@ -28,11 +28,14 @@ public class EditEmployeeViewController {
         }else {
             int OldEmployeeIDInt = Integer.parseInt(oldEmployeeIDText);
             try {
+                EditEmployeeView2Controller.OldEmployeeIDInt = OldEmployeeIDInt;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/employee-management-view/edit-employee-2-view.fxml"));
                 Parent root = fxmlLoader.load();
+
                 EditEmployeeView2Controller controller = fxmlLoader.getController();
                 controller.setEditEmployeeViewController(this);
-                controller.setOldEmployeeIDInt(OldEmployeeIDInt);
+                controller.setOldEmployeeIDInt(Integer.parseInt(oldEmployeeIDText));
+
                 Stage editEmployeeView = new Stage();
                 editEmployeeView.setScene(new Scene(root));
                 editEmployeeView.setTitle("Edit Employee");

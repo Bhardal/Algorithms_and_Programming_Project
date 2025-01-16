@@ -35,7 +35,6 @@ public class CreateEmployeeViewController {
             a.show();
         }else {
             int employeeIDInt = Integer.parseInt(employeeIDText);
-            employeeManagementViewController.addEmployeeInfo(employeeIDInt, employeeNameText);
 
             String url = "jdbc:sqlite:mydatabase.db";
             String sql = "INSERT INTO Employees(name, EmployeeID) VALUES(?, ?)";
@@ -48,6 +47,7 @@ public class CreateEmployeeViewController {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
+            employeeManagementViewController.addEmployeeInfo(employeeIDInt);
 
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();

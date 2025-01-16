@@ -10,43 +10,54 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.magicmafia.ntm.neko_task_manager.management.Employee;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EmployeeManagementViewController implements Initializable {
     @FXML
-    public TableView<Employee> employeeTableView;
+    public TableView<String> employeeTableView;
     @FXML
-    public TableColumn<Employee, Integer> employeeIDTableColumn;
+    public TableColumn<String, Integer> employeeIDTableColumn;
     @FXML
-    public TableColumn<Employee, String> employeeNameTableColumn;
+    public TableColumn<String, String> employeeNameTableColumn;
     @FXML
-    public TableColumn<Employee, String> employeeProjectHistoryTableColumn;
+    public TableColumn<String, String> employeeProjectHistoryTableColumn;
     @FXML
-    public ObservableList<Employee> employeeInfos;
+    public ObservableList<String> employeeInfos;
     @FXML
     public Button backButton;
 
 
-    public void addEmployeeInfo(int ID, String name) {
-        employeeInfos = FXCollections.observableArrayList(
-            new Employee(ID, name)
-        );
+    public void addEmployeeInfo(int OldEmployeeIDInt) {
+        employeeInfos = FXCollections.observableArrayList();
+        String url = "jdbc:sqlite:mydatabase.db";
+        String sql = "SELECT Name, EmployeeID FROM Employees WHERE EmployeeID = "+OldEmployeeIDInt+";";
+        String name = "this is the name of the person";
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement pstmt = conn.createStatement();
+             ResultSet rs =  pstmt.executeQuery(sql)){
+            name = rs.getString("Name");
+            System.out.println(name);
+            System.out.println(OldEmployeeIDInt);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("Employee ID"));
-//        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("Employee Name"));
-//        employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("Project History (past and present)"));
-//        employeeTableView.getColumns().addAll(employeeIDTableColumn, employeeNameTableColumn, employeeProjectHistoryTableColumn);
-//        employeeTableView.setItems(employeeInfos);
-
+        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<String, Integer>("Employee ID"));
+        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<String, String>("Employee Name"));
+        employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("Project History (past and present)"));
+        employeeTableView.setItems(employeeInfos);
     }
 
 
