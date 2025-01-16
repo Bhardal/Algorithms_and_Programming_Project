@@ -24,6 +24,20 @@ public class DatabaseConnection {
             System.out.println(e.getMessage());
         }
 
+        sql = "CREATE TABLE IF NOT EXISTS Projects ("
+            + " ProjectName VARCHAR(50) NOT NULL,"
+            + " ProjectID INT PRIMARY KEY,"
+            + " Employees MEDIUMTEXT,"
+            + " Tasks MEDIUMTEXT,"
+            + " Deadline datetime);";
+
+        try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Table Projects created.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
         sql = "CREATE TABLE IF NOT EXISTS Tasks ("
                 + " TaskName VARCHAR(50) NOT NULL,"
                 + " TaskID INT PRIMARY KEY,"
@@ -38,20 +52,6 @@ public class DatabaseConnection {
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
             System.out.println("Table Tasks created.");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        sql = "CREATE TABLE IF NOT EXISTS Projects ("
-            + " ProjectName VARCHAR(50) NOT NULL,"
-            + " ProjectID INT PRIMARY KEY,"
-            + " Employees MEDIUMTEXT,"
-            + " Tasks MEDIUMTEXT,"
-            + " Deadline datetime);";
-
-        try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-            System.out.println("Table Projects created.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
