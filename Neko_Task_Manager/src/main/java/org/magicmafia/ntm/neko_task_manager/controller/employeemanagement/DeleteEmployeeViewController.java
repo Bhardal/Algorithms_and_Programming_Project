@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.sql.*;
 
 public class DeleteEmployeeViewController {
     @FXML
@@ -28,6 +29,18 @@ public class DeleteEmployeeViewController {
             a.show();
         }else {
             int employeeIDInt = Integer.parseInt(employeeIDText);
+
+            String url = "jdbc:sqlite:mydatabase.db";
+            String sql = "DELETE FROM employees WHERE employee_id = (?);";
+            try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setInt(1, employeeIDInt);
+                pstmt.executeUpdate();
+                System.out.println("Employee Deleted.... \nDamn that was dark.");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();
         }
