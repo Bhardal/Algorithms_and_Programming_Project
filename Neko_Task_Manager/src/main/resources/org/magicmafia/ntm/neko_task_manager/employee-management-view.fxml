@@ -22,17 +22,7 @@
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#onCreateEmployeeClick" text="New Employee" />
                         <MenuItem mnemonicParsing="false" onAction="#onEditEmployeeClick" text="Edit Employe" />
-                        <MenuItem mnemonicParsing="false" text="Delete Employee" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="View">
-                     <items>
-                        <Menu mnemonicParsing="false" text="Order by">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Employee ID" />
-                              <MenuItem mnemonicParsing="false" text="Employee Name" />
-                           </items>
-                        </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#onDeleteEmployeeClick" text="Delete Employee" />
                      </items>
                   </Menu>
                </menus>

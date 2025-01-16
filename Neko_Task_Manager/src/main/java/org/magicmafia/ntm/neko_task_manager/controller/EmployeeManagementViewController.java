@@ -100,4 +100,21 @@ public class EmployeeManagementViewController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+    @FXML
+    public void onDeleteEmployeeClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/delete-employee-view.fxml"));
+            Parent root = fxmlLoader.load();
+            DeleteEmployeeViewController controller = fxmlLoader.getController();
+            controller.setEmployeeManagementViewController(this);
+            Stage deleteEmployeeView = new Stage();
+            deleteEmployeeView.setScene(new Scene(root));
+            deleteEmployeeView.setTitle("Delete Employee");
+            deleteEmployeeView.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
