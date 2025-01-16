@@ -25,7 +25,7 @@ public class MainMenuController {
         try {
             Stage stage = (Stage) kanbanButton.getScene().getWindow();
             stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/kanban-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/kanban-view/kanban-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage kanbanView = new Stage();
             kanbanView.setScene(new Scene(root));
@@ -41,7 +41,7 @@ public class MainMenuController {
         try {
             Stage stage = (Stage) calendarButton.getScene().getWindow();
             stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/calendar-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/calendar-view/calendar-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage calendarView = new Stage();
             calendarView.setScene(new Scene(root));
@@ -57,7 +57,7 @@ public class MainMenuController {
         try {
             Stage stage = (Stage) projectManagementButton.getScene().getWindow();
             stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/project-management-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage ProjectManagementView = new Stage();
             ProjectManagementView.setScene(new Scene(root));
@@ -73,7 +73,7 @@ public class MainMenuController {
         try {
             Stage stage = (Stage) employeeManagementButton.getScene().getWindow();
             stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/employee-management-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/employee-management-view/employee-management-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage EmployeeManagementView = new Stage();
             EmployeeManagementView.setScene(new Scene(root));

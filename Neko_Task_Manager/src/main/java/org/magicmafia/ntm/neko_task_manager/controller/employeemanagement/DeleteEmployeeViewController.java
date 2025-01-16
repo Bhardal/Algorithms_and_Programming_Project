@@ -1,4 +1,4 @@
-package org.magicmafia.ntm.neko_task_manager.controller;
+package org.magicmafia.ntm.neko_task_manager.controller.employeemanagement;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

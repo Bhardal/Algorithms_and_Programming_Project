@@ -1,4 +1,4 @@
-package org.magicmafia.ntm.neko_task_manager.controller;
+package org.magicmafia.ntm.neko_task_manager.controller.employeemanagement;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -6,13 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class EditEmployeeViewController {
+public class CreateEmployeeViewController {
     @FXML
-    public TextField textFieldOldEmployeeID;
+    public TextField textFieldEmployeeID;
     @FXML
-    public TextField textFieldNewEmployeeID;
-    @FXML
-    public TextField textFieldNewEmployeeName;
+    public TextField textFieldEmployeeName;
     @FXML
     public Button closeButton;
 
@@ -20,26 +18,23 @@ public class EditEmployeeViewController {
 
     @FXML
     private void onOKButtonClick() {
-        String oldEmployeeIDText = textFieldOldEmployeeID.getText();
-        String newEmployeeIDText = textFieldNewEmployeeID.getText();
-        String newEmployeeNameText = textFieldNewEmployeeName.getText();
-        if (oldEmployeeIDText.isEmpty() && newEmployeeIDText.isEmpty() && newEmployeeNameText.isEmpty()) {
+        String employeeIDText = textFieldEmployeeID.getText();
+        String employeeNameText = textFieldEmployeeName.getText();
+        if (employeeIDText.isEmpty() && employeeNameText.isEmpty()) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setHeaderText("Please enter correct employee information.");
             a.show();
-        }else if (oldEmployeeIDText.isEmpty()) {
+        }else if (employeeIDText.isEmpty()) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("Please enter a correct employee ID.");
             a.show();
-        }else if (newEmployeeIDText.isEmpty()) {
+        } else if (employeeNameText.isEmpty()) {
             Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("Please enter a correct employee ID.");
-            a.show();
-        }else if (newEmployeeNameText.isEmpty()) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("Please enter a correct employee Name.");
+            a.setContentText("Please enter a correct employee name.");
             a.show();
         }else {
+            int employeeIDInt = Integer.parseInt(employeeIDText);
+            employeeManagementViewController.addEmployeeInfo(employeeIDInt, employeeNameText);
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();
         }

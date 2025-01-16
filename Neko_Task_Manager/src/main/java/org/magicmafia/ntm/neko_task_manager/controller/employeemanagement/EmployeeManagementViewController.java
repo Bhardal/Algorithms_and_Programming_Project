@@ -1,4 +1,4 @@
-package org.magicmafia.ntm.neko_task_manager.controller;
+package org.magicmafia.ntm.neko_task_manager.controller.employeemanagement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.magicmafia.ntm.neko_task_manager.management.Employee;
 
@@ -71,7 +70,7 @@ public class EmployeeManagementViewController implements Initializable {
     @FXML
     public void onCreateEmployeeClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/create-employee-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/employee-management-view/create-employee-view.fxml"));
             Parent root = fxmlLoader.load();
             CreateEmployeeViewController controller = fxmlLoader.getController();
             controller.setEmployeeManagementViewController(this);
@@ -88,7 +87,7 @@ public class EmployeeManagementViewController implements Initializable {
     @FXML
     public void onEditEmployeeClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/edit-employee-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/employee-management-view/edit-employee-view.fxml"));
             Parent root = fxmlLoader.load();
             EditEmployeeViewController controller = fxmlLoader.getController();
             controller.setEmployeeManagementViewController(this);
@@ -105,7 +104,7 @@ public class EmployeeManagementViewController implements Initializable {
     @FXML
     public void onDeleteEmployeeClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/delete-employee-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/employee-management-view/delete-employee-view.fxml"));
             Parent root = fxmlLoader.load();
             DeleteEmployeeViewController controller = fxmlLoader.getController();
             controller.setEmployeeManagementViewController(this);
