@@ -5,11 +5,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ProjectManagementViewController {
+    @FXML
+    public MenuItem newProject;
+    @FXML
+    public MenuItem editProject;
+    @FXML
+    public MenuItem deleteProject;
+    @FXML
+    public MenuItem newTask;
+    @FXML
+    public MenuItem editTask;
+    @FXML
+    public MenuItem deleteTask;
+
     @FXML
     public Button backButton;
 

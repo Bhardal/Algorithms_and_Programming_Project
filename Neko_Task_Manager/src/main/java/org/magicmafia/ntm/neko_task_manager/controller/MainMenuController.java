@@ -11,46 +11,9 @@ import java.io.IOException;
 
 public class MainMenuController {
     @FXML
-    public Button kanbanButton;
-    @FXML
-    public Button calendarButton;
-    @FXML
     public Button projectManagementButton;
     @FXML
     public Button employeeManagementButton;
-
-
-    @FXML
-    public void onKanbanViewButtonClick() {
-        try {
-            Stage stage = (Stage) kanbanButton.getScene().getWindow();
-            stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/kanban-view/kanban-view.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage kanbanView = new Stage();
-            kanbanView.setScene(new Scene(root));
-            kanbanView.setTitle("kanban");
-            kanbanView.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void onCalendarViewButtonClick() {
-        try {
-            Stage stage = (Stage) calendarButton.getScene().getWindow();
-            stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/calendar-view/calendar-view.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage calendarView = new Stage();
-            calendarView.setScene(new Scene(root));
-            calendarView.setTitle("Calendar");
-            calendarView.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     public void onProjectManagementViewButtonClick(){
