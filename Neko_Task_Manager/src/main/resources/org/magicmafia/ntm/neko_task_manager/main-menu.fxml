@@ -14,7 +14,7 @@
          <children>
             <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="270.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onKanbanViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Kanban View" textFill="#47073e">
+                  <Button fx:id="kanbanButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onKanbanViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Kanban View" textFill="#47073e">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
@@ -25,7 +25,7 @@
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCalendarViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Calendar View" textFill="#47073e">
+                  <Button fx:id="calendarButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCalendarViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Calendar View" textFill="#47073e">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
@@ -36,7 +36,7 @@
                         <Insets bottom="20.0" left="20.0" top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onProjectManagementViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Project Management" textFill="#47073e">
+                  <Button fx:id="projectManagementButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onProjectManagementViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Project Management" textFill="#47073e">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
@@ -47,7 +47,7 @@
                         <Insets bottom="20.0" left="20.0" top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="30.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEmployeeManagementViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Employee Management" textFill="#47073e">
+                  <Button fx:id="employeeManagementButton" layoutX="30.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEmployeeManagementViewButtonClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #e0e3e8;" text="Employee Management" textFill="#47073e">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>

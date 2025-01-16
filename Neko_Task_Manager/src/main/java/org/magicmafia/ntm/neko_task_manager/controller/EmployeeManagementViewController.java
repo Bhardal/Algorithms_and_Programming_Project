@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,29 +28,43 @@ public class EmployeeManagementViewController implements Initializable {
     @FXML
     public TableColumn<Employee, String> employeeProjectHistoryTableColumn;
     @FXML
-    ObservableList<Employee> employeeInfos;
+    public ObservableList<Employee> employeeInfos;
+    @FXML
+    public Button backButton;
 
 
-    public ObservableList<Employee> addEmployeeInfo(int ID, String name) {
+    public void addEmployeeInfo(int ID, String name) {
         employeeInfos = FXCollections.observableArrayList(
             new Employee(ID, name)
         );
-        return employeeInfos;
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("Employee ID"));
-//
 //        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<Employee, String>("Employee Name"));
-//
 //        employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("Project History (past and present)"));
-//
 //        employeeTableView.getColumns().addAll(employeeIDTableColumn, employeeNameTableColumn, employeeProjectHistoryTableColumn);
-//
 //        employeeTableView.setItems(employeeInfos);
 
+    }
+
+
+    @FXML
+    public void onBackButtonClick() {
+        try {
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/main-menu.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage backButton = new Stage();
+            backButton.setTitle("Main Menu");
+            backButton.setScene(new Scene(root));
+            backButton.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -60,10 +75,27 @@ public class EmployeeManagementViewController implements Initializable {
             Parent root = fxmlLoader.load();
             CreateEmployeeViewController controller = fxmlLoader.getController();
             controller.setEmployeeManagementViewController(this);
-            Stage calendarView = new Stage();
-            calendarView.setScene(new Scene(root));
-            calendarView.setTitle("Employee Management");
-            calendarView.show();
+            Stage createEmployeeView = new Stage();
+            createEmployeeView.setScene(new Scene(root));
+            createEmployeeView.setTitle("Create Employee");
+            createEmployeeView.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    public void onEditEmployeeClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/edit-employee-view.fxml"));
+            Parent root = fxmlLoader.load();
+            EditEmployeeViewController controller = fxmlLoader.getController();
+            controller.setEmployeeManagementViewController(this);
+            Stage editEmployeeView = new Stage();
+            editEmployeeView.setScene(new Scene(root));
+            editEmployeeView.setTitle("Edit Employee");
+            editEmployeeView.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
