@@ -29,15 +29,22 @@ public class EditEmployeeView2Controller implements Initializable {
             a.setContentText("Please enter a correct employee Name.");
             a.show();
         }else {
-            String ProjectList = String.join(",", projectList);
+//            String ProjectList = String.join(",", projectList);
             String url = "jdbc:sqlite:mydatabase.db";
-            String sql = "DELETE FROM employees WHERE EmployeeID = (?); INSERT INTO Employees(name, EmployeeID, Projects) VALUES(?, ?, ?)";
+            String sql = "DELETE FROM employees WHERE EmployeeID = (?)";
             try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, OldEmployeeIDInt);
-                pstmt.setString(2, newEmployeeNameText);
-                pstmt.setInt(3, OldEmployeeIDInt);
-                pstmt.setString(4, ProjectList);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            sql = "INSERT INTO Employees(name, EmployeeID) VALUES(?, ?)";
+            try (Connection conn = DriverManager.getConnection(url);
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, newEmployeeNameText);
+                pstmt.setInt(2, OldEmployeeIDInt);
+//                pstmt.setString(4, ProjectList);
                 pstmt.executeUpdate();
                 System.out.println("Data updated.");
             } catch (SQLException e) {
