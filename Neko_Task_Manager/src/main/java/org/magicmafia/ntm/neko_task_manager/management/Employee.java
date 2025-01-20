@@ -1,16 +1,14 @@
 package org.magicmafia.ntm.neko_task_manager.management;
 
-import java.util.ArrayList;
-
 public class Employee {
-    private String name;
-    private int employeeID;
-    private ArrayList<Project> projectHistory;
+    private final Integer employeeID;
+    private final String name;
+    private final String projects;
 
-
-    public Employee(int employeeID, String name) {
+    public Employee(Integer employeeID, String name, String projects) {
         this.employeeID = employeeID;
         this.name = name;
+        this.projects = projects;
     }
     
 
@@ -18,24 +16,8 @@ public class Employee {
     public String toString() {
         return "Employee ID: " + employeeID +
                 ", Name: " + name +
-                ", Project History: " + projectHistory;
+                ", Project History: " + projects;
     }
-
-
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public void setProjectHistory(ArrayList<Project> projectHistory) {
-        this.projectHistory = projectHistory;
-    }
-
 
     public int getEmployeeID() {
         return employeeID;
@@ -47,7 +29,7 @@ public class Employee {
     }
 
 
-    public ArrayList<Project> getProjectHistory() {
-        return projectHistory;
+    public String getProjectHistory() {
+        return projects;
     }
 }

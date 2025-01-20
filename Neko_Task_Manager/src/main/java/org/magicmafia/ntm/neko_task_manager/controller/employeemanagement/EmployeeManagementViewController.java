@@ -1,10 +1,18 @@
 package org.magicmafia.ntm.neko_task_manager.controller.employeemanagement;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.magicmafia.ntm.neko_task_manager.management.Employee;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,47 +20,44 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.magicmafia.ntm.neko_task_manager.management.Employee;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
-public class EmployeeManagementViewController implements Initializable {
+public class EmployeeManagementViewController {
     @FXML
-    public TableView<String> employeeTableView;
+    public TableView<Employee> employeeTableView;
     @FXML
-    public TableColumn<String, Integer> employeeIDTableColumn;
+    public TableColumn<Employee, Integer> employeeIDTableColumn;
     @FXML
-    public TableColumn<String, String> employeeNameTableColumn;
+    public TableColumn<Employee, String> employeeNameTableColumn;
     @FXML
-    public TableColumn<String, String> employeeProjectHistoryTableColumn;
+    public TableColumn<Employee, String> employeeProjectHistoryTableColumn;
     @FXML
-    public ObservableList<String> employeeInfos;
+    public ObservableList<Employee> employeeInfos = FXCollections.observableArrayList();
     @FXML
     public Button backButton;
 
 
-    public ObservableList<String> UpdateEmployeeInfo() {
+    public void initialize() {
+        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
+        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("projects"));
+        employeeTableView.setItems(employeeInfos);
+    }
+
+
+    public void UpdateEmployeeInfo() {
+        employeeInfos.clear();
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "SELECT Name, EmployeeID, Projects FROM Employees;";
-        String name;
-        int employeeIDTemp;
-        String project;
-        ArrayList<String> names = new ArrayList<String>();
-        ArrayList<Integer> employeeIDs = new ArrayList<Integer>();
-        ArrayList<String> projectIDs = new ArrayList<String>();
-        ArrayList<String> projectNames = new ArrayList<String>();
         try (Connection conn = DriverManager.getConnection(url);
              Statement pstmt = conn.createStatement();
              ResultSet rs =  pstmt.executeQuery(sql)){
             while (rs.next()) {
-                names.add(rs.getString("Name"));
-                employeeIDs.add(rs.getInt("EmployeeID"));
-                projectIDs.add(rs.getString("Projects"));
-                // ??? Ajouter dans la list employeeInfos les infos Name, ID et projects
+                int employeeID = rs.getInt("EmployeeID");
+                String name = rs.getString("Name");
+                String projects = rs.getString("Projects");
+                Employee employee = new Employee(employeeID, name, projects);
+                System.out.println(employee);
+                employeeInfos.add(employee);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -73,17 +78,7 @@ public class EmployeeManagementViewController implements Initializable {
 //            }
 //        }
         // ??? Regarde pour faire en sorte de parse les valeurs de la liste dans le tableau
-
-        return employeeInfos;
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        employeeIDTableColumn.setCellValueFactory(new PropertyValueFactory<String, Integer>("Employee ID"));
-        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<String, String>("Employee Name"));
-        employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("Project History (past and present)"));
-//        employeeTableView.setItems(this.employeeInfos);
+        employeeTableView.setItems(employeeInfos);
     }
 
 
