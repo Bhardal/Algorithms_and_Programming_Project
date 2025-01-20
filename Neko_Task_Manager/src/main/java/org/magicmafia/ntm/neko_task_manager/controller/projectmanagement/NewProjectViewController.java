@@ -1,11 +1,18 @@
 package org.magicmafia.ntm.neko_task_manager.controller.projectmanagement;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class NewProjectViewController {
     @FXML
@@ -44,7 +51,7 @@ public class NewProjectViewController {
             int projectIDInt = Integer.parseInt(projectIDText);
 
             String url = "jdbc:sqlite:mydatabase.db";
-            String sql = "INSERT INTO Projects(ProjectName, ProjectID, Deadline) VALUES(?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Projects(ProjectName, ProjectID, Deadline) VALUES(?, ?, ?)";
             try (Connection conn = DriverManager.getConnection(url);
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, projectNameText);
@@ -52,6 +59,7 @@ public class NewProjectViewController {
                 pstmt.setDate(3, Date.valueOf(deadlineDate));
                 pstmt.executeUpdate();
                 System.out.println("Data inserted.");
+                projectManagementViewController.updateProjectInfo();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }

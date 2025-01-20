@@ -58,11 +58,13 @@
                                  <children>
                                     <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="1080.0">
                                        <children>
-                                          <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="1080.0">
+                                          <TableView fx:id="projectTableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="1080.0">
                                             <columns>
-                                              <TableColumn prefWidth="85.0" text="Project ID" />
-                                              <TableColumn prefWidth="185.0" text="Project Name" />
-                                                <TableColumn prefWidth="810.0" text="Project tasks" />
+                                              <TableColumn fx:id="projectIDTableColumn" prefWidth="85.0" text="Project ID" />
+                                              <TableColumn fx:id="projectNameTableColumn" prefWidth="185.0" text="Project Name" />
+                                                <TableColumn fx:id="projectDeadlineTableColumn" prefWidth="120.0" text="Project Deadlines" />
+                                                <TableColumn fx:id="projectStatusTableColumn" prefWidth="100.0" text="Project Status" />
+                                                <TableColumn fx:id="projectTasksTableColumn" prefWidth="590.0" text="Project tasks" />
                                             </columns>
                                           </TableView>
                                        </children>

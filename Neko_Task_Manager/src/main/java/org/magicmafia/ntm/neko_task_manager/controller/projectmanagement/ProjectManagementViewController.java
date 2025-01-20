@@ -1,9 +1,19 @@
 package org.magicmafia.ntm.neko_task_manager.controller.projectmanagement;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.magicmafia.ntm.neko_task_manager.management.Project;
+
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,10 +22,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.magicmafia.ntm.neko_task_manager.management.Project;
-
-import java.io.IOException;
-import java.sql.*;
 
 public class ProjectManagementViewController{
     @FXML
@@ -35,30 +41,52 @@ public class ProjectManagementViewController{
     @FXML
     public Button backButton;
     @FXML
-    public ObservableList<Project> projectList;
+    public ObservableList<Project> projectList  = FXCollections.observableArrayList();
+    @FXML
+    public TableView<Project> projectTableView;
+    @FXML
+    public TableColumn<Project, Integer> projectIDTableColumn;
+    @FXML
+    public TableColumn<Project, String> projectNameTableColumn;
+    @FXML
+    public TableColumn<Project, Date> projectDeadlineTableColumn;
+    @FXML
+    public TableColumn<Project, String> projectStatusTableColumn;
+    @FXML
+    public TableColumn<Project, String> projectTasksTableColumn;
+
+
+    public void initialize() {
+        projectIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectID"));
+        projectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectName"));
+        projectDeadlineTableColumn.setCellValueFactory(new PropertyValueFactory<>("Deadline"));
+        projectStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        projectTasksTableColumn.setCellValueFactory(new PropertyValueFactory<>("Tasks"));
+        projectTableView.setItems(projectList);
+        updateProjectInfo();
+    }
 
 
     @FXML
-    public ObservableList<Project> updateProjectInfo() {
+    public void updateProjectInfo() {
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "SELECT ProjectName, ProjectID, Deadline FROM Projects";
-        String name;
-        int projectIDTemp;
-        Date deadline;
         try (Connection conn = DriverManager.getConnection(url);
              Statement pstmt = conn.createStatement();
              ResultSet rs =  pstmt.executeQuery(sql)){
             while (rs.next()) {
-                name = rs.getString("ProjectName");
-                projectIDTemp = rs.getInt("ProjectID");
-                deadline = rs.getDate("Deadline");
-
-                projectList.add(new Project(name, projectIDTemp, deadline));
+                String name = rs.getString("ProjectName");
+                int projectIDTemp = rs.getInt("ProjectID");
+                Date deadline = rs.getDate("Deadline");
+                String status = rs.getString("Status");
+                String tasks = rs.getString("Tasks");
+                Project project = new Project(projectIDTemp, name, deadline, status, tasks);
+                projectList.add(project);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return projectList;
+        projectTableView.setItems(projectList);
     }
 
 
@@ -181,20 +209,5 @@ public class ProjectManagementViewController{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-    public void updateProjectTable() {
-        TableView<Project> projectTableView = new TableView<>();
-        TableColumn<Project, Integer> projectIDTableColumn = new TableColumn<>("Project ID");
-        projectIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("projectIDTemp"));
-        TableColumn<Project, String> projectNameTableColumn = new TableColumn<>("Project Name");
-        projectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("projectIDTemp"));
-        TableColumn<Project, String> projectDeadlineTableColumn = new TableColumn<>("Project Deadline");
-        projectDeadlineTableColumn.setCellValueFactory(new PropertyValueFactory<>("projectIDTemp"));
-
-        projectTableView.getColumns().addAll(projectIDTableColumn, projectNameTableColumn, projectDeadlineTableColumn);
-
-        projectList = updateProjectInfo();
     }
 }
