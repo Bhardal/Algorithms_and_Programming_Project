@@ -8,7 +8,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import java.sql.*;
 
 public class EditEmployeeViewController {
     @FXML
@@ -54,5 +53,9 @@ public class EditEmployeeViewController {
 
     public void setEmployeeManagementViewController(EmployeeManagementViewController employeeManagementViewController) {
         this.employeeManagementViewController = employeeManagementViewController;
+    }
+
+    public void UpdateEmployeeInfo() {
+        employeeManagementViewController.UpdateEmployeeInfo();
     }
 }

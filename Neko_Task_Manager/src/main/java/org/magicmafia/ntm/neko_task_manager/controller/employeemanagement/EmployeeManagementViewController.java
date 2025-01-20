@@ -41,6 +41,7 @@ public class EmployeeManagementViewController {
         employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         employeeProjectHistoryTableColumn.setCellValueFactory(new PropertyValueFactory<>("projects"));
         employeeTableView.setItems(employeeInfos);
+        UpdateEmployeeInfo();
     }
 
 
@@ -54,8 +55,8 @@ public class EmployeeManagementViewController {
             while (rs.next()) {
                 int employeeID = rs.getInt("EmployeeID");
                 String name = rs.getString("Name");
-                String projects = rs.getString("Projects");
-                Employee employee = new Employee(employeeID, name, projects);
+                String projectID = rs.getString("Projects");
+                Employee employee = new Employee(employeeID, name, projectID);
                 System.out.println(employee);
                 employeeInfos.add(employee);
             }
@@ -63,20 +64,20 @@ public class EmployeeManagementViewController {
             System.out.println(e.getMessage());
         }
 
-//        String sql2;
-//        for (String workedProjectsList : projectIDs) {
-//            String[] workedProjectIDs = workedProjectsList.split(",");
-//            for (String id : workedProjectIDs) {
-//                sql2 = "SELECT ProjectName FROM Projects WHERE ProjectID = " + id + ";";
-//                try (Connection conn = DriverManager.getConnection(url);
-//                     Statement pstmt = conn.createStatement();
-//                     ResultSet rs =  pstmt.executeQuery(sql2)){
-//                    projectNames.add(rs.getString("ProjectName"));
-//                } catch (SQLException e) {
-//                    System.out.println(e.getMessage());
-//                }
-//            }
-//        }
+    //    String sql2;
+    //    for (String workedProjectsList : projectIDs) {
+    //        String[] workedProjectIDs = workedProjectsList.split(",");
+    //        for (String id : workedProjectIDs) {
+    //            sql2 = "SELECT ProjectName FROM Projects WHERE ProjectID = " + id + ";";
+    //            try (Connection conn = DriverManager.getConnection(url);
+    //                 Statement pstmt = conn.createStatement();
+    //                 ResultSet rs =  pstmt.executeQuery(sql2)){
+    //                projectNames.add(rs.getString("ProjectName"));
+    //            } catch (SQLException e) {
+    //                System.out.println(e.getMessage());
+    //            }
+    //        }
+    //    }
         // ??? Regarde pour faire en sorte de parse les valeurs de la liste dans le tableau
         employeeTableView.setItems(employeeInfos);
     }

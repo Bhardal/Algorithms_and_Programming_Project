@@ -1,17 +1,20 @@
 package org.magicmafia.ntm.neko_task_manager.controller.employeemanagement;
 
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class EditEmployeeView2Controller implements Initializable {
+public class EditEmployeeView2Controller{
     @FXML
     public TextField textFieldNewEmployeeName;
     @FXML
@@ -19,6 +22,7 @@ public class EditEmployeeView2Controller implements Initializable {
     @FXML
     public Button closeButton;
     public static int OldEmployeeIDInt;
+
     private EditEmployeeViewController editEmployeeViewController;
 
     @FXML
@@ -47,6 +51,7 @@ public class EditEmployeeView2Controller implements Initializable {
 //                pstmt.setString(4, ProjectList);
                 pstmt.executeUpdate();
                 System.out.println("Data updated.");
+                editEmployeeViewController.UpdateEmployeeInfo();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -65,8 +70,7 @@ public class EditEmployeeView2Controller implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize() {
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "SELECT Name, EmployeeID FROM Employees WHERE EmployeeID = "+this.OldEmployeeIDInt+";";
         String name = "this is the name of the person";

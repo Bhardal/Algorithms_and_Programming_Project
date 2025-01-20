@@ -1,9 +1,8 @@
 package org.magicmafia.ntm.neko_task_manager.management;
-
 public class Employee {
-    private final Integer employeeID;
-    private final String name;
-    private final String projects;
+    private Integer employeeID;
+    private String name;
+    private String projects;
 
     public Employee(Integer employeeID, String name, String projects) {
         this.employeeID = employeeID;
@@ -19,6 +18,22 @@ public class Employee {
                 ", Project History: " + projects;
     }
 
+
+    public void setEmployeeID(Integer employeeID) {
+        this.employeeID = employeeID;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public void setProjectHistory(String projects) {
+        this.projects = projects;
+    }
+
+
     public int getEmployeeID() {
         return employeeID;
     }
@@ -29,7 +44,7 @@ public class Employee {
     }
 
 
-    public String getProjectHistory() {
+    public String getProjects() {
         return projects;
     }
 }
