@@ -45,14 +45,6 @@
                               <Insets bottom="20.0" top="20.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="Employees">
-                           <font>
-                              <Font name="Arial" size="18.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </Label>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
@@ -67,11 +59,6 @@
                               <Insets bottom="20.0" top="20.0" />
                            </VBox.margin>
                         </DatePicker>
-                        <TextField fx:id="textFieldNewProjectEmployees" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0">
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </TextField>
                      </children>
                   </VBox>
                </children>

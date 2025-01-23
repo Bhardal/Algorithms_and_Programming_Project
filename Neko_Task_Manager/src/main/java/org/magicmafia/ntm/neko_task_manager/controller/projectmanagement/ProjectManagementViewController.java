@@ -17,10 +17,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ProjectManagementViewController{
@@ -51,19 +56,64 @@ public class ProjectManagementViewController{
     @FXML
     public TableColumn<Project, Date> projectDeadlineTableColumn;
     @FXML
-    public TableColumn<Project, String> projectTasksTableColumn;
+    public Tab kanbanViewTab;
     @FXML
-    public TableColumn<Project, String> projectEmployeesTableColumn;
+    public VBox todoVBox;
+    @FXML
+    public VBox inProgressVBox;
+    @FXML
+    public VBox doneVBox;
+    @FXML
+    public VBox discontinuedVBox;
+    @FXML
+    public Tab createTaskView;
+    @FXML
+    public Tab editTaskView;
+    @FXML
+    public Tab deleteTaskView;
+    @FXML
+    public TextField textFieldProjectID;
+    @FXML
+    public TextField textFieldTaskID;
+    @FXML
+    public DatePicker datePickerTaskDeadline;
+    @FXML
+    public TextField textFieldTaskPriority;
+    @FXML
+    public Label labelTaskStatus;
+    @FXML
+    public TextField textFieldTaskEmployee;
+    @FXML
+    public TextField textFieldTaskDescription;
+    @FXML
+    public TextField textFieldTaskComment;
+    @FXML
+    public Button buttonActionTask;
 
 
     public void initialize() {
         projectIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectID"));
         projectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectName"));
         projectDeadlineTableColumn.setCellValueFactory(new PropertyValueFactory<>("Deadline"));
-        projectEmployeesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Employees"));
-        projectTasksTableColumn.setCellValueFactory(new PropertyValueFactory<>("Tasks"));
         projectTableView.setItems(projectList);
         UpdateProjectInfo();
+    }
+
+
+    @FXML
+    public void onBackButtonClick() {
+        try {
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/main-menu.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage backButton = new Stage();
+            backButton.setTitle("Main Menu");
+            backButton.setScene(new Scene(root));
+            backButton.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -143,78 +193,34 @@ public class ProjectManagementViewController{
 
 
     @FXML
-    public void onNewTaskClick() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/new-task-view.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage newTaskButton = new Stage();
-            newTaskButton.setTitle("Main Menu");
-            newTaskButton.setScene(new Scene(root));
-            newTaskButton.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void onButtonActionTask() {
     }
 
 
     @FXML
-    public void onEditTaskClick() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/edit-task-view.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage editTaskButton = new Stage();
-            editTaskButton.setTitle("Main Menu");
-            editTaskButton.setScene(new Scene(root));
-            editTaskButton.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public void updateTaskInfo() {
+        todoVBox.getChildren().clear();
+        inProgressVBox.getChildren().clear();
+        doneVBox.getChildren().clear();
+        discontinuedVBox.getChildren().clear();
 
+        // String url = "jdbc:sqlite:mydatabase.db";
+        // String sql = "INSERT INTO Tasks(TaskID, Priority, Status, Deadline, Comment, Description, ProjectID, EmployeeID) VALUES(?, ?, ?, ?, ?, ?, (SELECT ProjectID FROM Projects WHERE ProjectID = ?), (SELECT EmployeeID FROM Employees WHERE EmployeeID = ?))";
+        // try (Connection conn = DriverManager.getConnection(url);
+        //     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        //     pstmt.setInt(1, taskIDInt);
+        //     pstmt.setInt(2, priorityInt);
+        //     pstmt.setString(3, statusText);
+        //     pstmt.setDate(4, deadlineDate);
+        //     pstmt.setString(5, commentText);
+        //     pstmt.setString(6, descriptionText);
+        //     pstmt.setInt(7, thisProjectID);
+        //     pstmt.setInt(8, selectedEmployeeIDInt)
+        //     pstmt.executeUpdate();
+        //     System.out.println("Data inserted.");
+        // } catch (SQLException e) {
+        //     System.out.println(e.getMessage());
+        // }
 
-    @FXML
-    public void onDeleteTaskClick() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/delete-task-view.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage deleteTaskButton = new Stage();
-            deleteTaskButton.setTitle("Main Menu");
-            deleteTaskButton.setScene(new Scene(root));
-            deleteTaskButton.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    public void onAssignTaskToStaffClick() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/assign-task-to-staff-view.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage assignTaskToStaffButton = new Stage();
-            assignTaskToStaffButton.setTitle("Main Menu");
-            assignTaskToStaffButton.setScene(new Scene(root));
-            assignTaskToStaffButton.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    public void onBackButtonClick() {
-        try {
-            Stage stage = (Stage) backButton.getScene().getWindow();
-            stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/main-menu.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage backButton = new Stage();
-            backButton.setTitle("Main Menu");
-            backButton.setScene(new Scene(root));
-            backButton.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

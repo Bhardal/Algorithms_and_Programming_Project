@@ -22,8 +22,6 @@ public class EditProjectView2Controller {
     @FXML
     public DatePicker datePickerNewProjectDeadline;
     @FXML
-    public TextField textFieldNewProjectEmployees;
-    @FXML
     public Button closeButton;
     
     public static int OldProjectIDInt;

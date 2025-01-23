@@ -1,6 +1,9 @@
 package org.magicmafia.ntm.neko_task_manager;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DatabaseManagement {
     public static void TablesCreate() {
@@ -32,7 +35,6 @@ public class DatabaseManagement {
 
         sql = "CREATE TABLE IF NOT EXISTS Tasks ("
             + " TaskID INT PRIMARY KEY,"
-            + " TaskName VARCHAR(50) NOT NULL,"
             + " Priority INT,"
             + " Status VARCHAR(50),"
             + " Deadline date,"
