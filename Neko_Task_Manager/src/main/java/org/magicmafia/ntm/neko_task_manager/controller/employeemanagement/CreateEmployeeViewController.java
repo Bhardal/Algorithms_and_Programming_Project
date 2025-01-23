@@ -34,7 +34,7 @@ public class CreateEmployeeViewController {
             a.setContentText("Please enter a correct employee name.");
             a.show();
         }else {
-            Boolean flag = true;
+            Boolean isInt = true;
             try {
                 int employeeIDInt = Integer.parseInt(employeeIDText);
             }
@@ -42,13 +42,14 @@ public class CreateEmployeeViewController {
                 Alert a = new Alert(Alert.AlertType.ERROR);
                 a.setContentText("Please enter a correct employee ID.");
                 a.show();
-                flag = false;
+                isInt = false;
             }
-            if (flag) {
+            if (isInt) {
                 int employeeIDInt = Integer.parseInt(employeeIDText);
 
                 String url = "jdbc:sqlite:mydatabase.db";
                 String sql = "INSERT INTO Employees(name, EmployeeID) VALUES(?, ?)";
+                Boolean isUniqueID = true;
                 try (Connection conn = DriverManager.getConnection(url);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
                     pstmt.setString(1, employeeNameText);
@@ -57,11 +58,19 @@ public class CreateEmployeeViewController {
                     System.out.println("Data inserted.");
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
+                    if (e.getMessage().contains("UNIQUE constraint failed")) {
+                        Alert a = new Alert(Alert.AlertType.ERROR);
+                        a.setContentText("Employee ID already exists.");
+                        a.show();
+                        isUniqueID = false;
+                    }
                 }
-                employeeManagementViewController.UpdateEmployeeInfo();
+                if (isUniqueID) {
+                    employeeManagementViewController.UpdateEmployeeInfo();
 
-                Stage stage = (Stage) closeButton.getScene().getWindow();
-                stage.close();
+                    Stage stage = (Stage) closeButton.getScene().getWindow();
+                    stage.close();
+                }
             }
         }
     }
