@@ -57,7 +57,6 @@ public class EmployeeManagementViewController {
                 String name = rs.getString("Name");
                 String projectID = rs.getString("Projects");
                 Employee employee = new Employee(employeeID, name, projectID);
-                System.out.println(employee);
                 employeeInfos.add(employee);
             }
         } catch (SQLException e) {

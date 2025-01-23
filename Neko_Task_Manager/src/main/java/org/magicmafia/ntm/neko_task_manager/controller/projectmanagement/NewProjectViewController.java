@@ -26,7 +26,7 @@ public class NewProjectViewController {
 
     private ProjectManagementViewController projectManagementViewController;
 
-    public void setprojectManagementViewController(ProjectManagementViewController projectManagementViewController) {
+    public void setProjectManagementViewController(ProjectManagementViewController projectManagementViewController) {
         this.projectManagementViewController = projectManagementViewController;
     }
 
@@ -59,11 +59,10 @@ public class NewProjectViewController {
                 pstmt.setDate(3, Date.valueOf(deadlineDate));
                 pstmt.executeUpdate();
                 System.out.println("Data inserted.");
-                projectManagementViewController.updateProjectInfo();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-//            projectManagementViewController.updateProjectTable();
+            projectManagementViewController.updateProjectInfo();
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();
         }

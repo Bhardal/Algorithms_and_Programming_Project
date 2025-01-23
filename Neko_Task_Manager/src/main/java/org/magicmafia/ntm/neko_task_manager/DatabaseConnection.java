@@ -1,6 +1,9 @@
 package org.magicmafia.ntm.neko_task_manager;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DatabaseConnection {
     public static void main(String[] args) {
@@ -28,7 +31,7 @@ public class DatabaseConnection {
             + " ProjectID INT PRIMARY KEY,"
             + " ProjectName VARCHAR(50) NOT NULL,"
             + " Employees MEDIUMTEXT,"
-            + " Tasks MEDIUMTEXT,"
+            + " Tasks VARCHAR(50),"
             + " Deadline date);";
 
         try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {

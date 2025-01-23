@@ -51,16 +51,16 @@ public class ProjectManagementViewController{
     @FXML
     public TableColumn<Project, Date> projectDeadlineTableColumn;
     @FXML
-    public TableColumn<Project, String> projectStatusTableColumn;
-    @FXML
     public TableColumn<Project, String> projectTasksTableColumn;
+    @FXML
+    public TableColumn<Project, String> projectEmployeesTableColumn;
 
 
     public void initialize() {
         projectIDTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectID"));
         projectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectName"));
         projectDeadlineTableColumn.setCellValueFactory(new PropertyValueFactory<>("Deadline"));
-        projectStatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        projectEmployeesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Employees"));
         projectTasksTableColumn.setCellValueFactory(new PropertyValueFactory<>("Tasks"));
         projectTableView.setItems(projectList);
         updateProjectInfo();
@@ -78,9 +78,8 @@ public class ProjectManagementViewController{
                 String name = rs.getString("ProjectName");
                 int projectIDTemp = rs.getInt("ProjectID");
                 Date deadline = rs.getDate("Deadline");
-                String status = rs.getString("Status");
                 String tasks = rs.getString("Tasks");
-                Project project = new Project(projectIDTemp, name, deadline, status, tasks);
+                Project project = new Project(projectIDTemp, name, deadline, tasks);
                 projectList.add(project);
             }
         } catch (SQLException e) {
@@ -96,6 +95,8 @@ public class ProjectManagementViewController{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/new-project-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage newProjectButton = new Stage();
+            NewProjectViewController controller = fxmlLoader.getController();
+            controller.setProjectManagementViewController(this);
             newProjectButton.setTitle("Main Menu");
             newProjectButton.setScene(new Scene(root));
             newProjectButton.show();
