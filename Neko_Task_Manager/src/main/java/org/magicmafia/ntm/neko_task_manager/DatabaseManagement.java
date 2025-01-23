@@ -3,7 +3,7 @@ package org.magicmafia.ntm.neko_task_manager;
 import java.sql.*;
 
 public class DatabaseManagement {
-    public static void TablesCreation() {
+    public static void TablesCreate() {
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "CREATE TABLE IF NOT EXISTS Employees ("
                    + " EmployeeID INT PRIMARY KEY,"
