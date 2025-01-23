@@ -46,4 +46,11 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
+
+
+    @FXML
+    public void onExitButtonClick(){
+        Stage stage = (Stage) projectManagementButton.getScene().getWindow();
+        stage.close();
+    }
 }
