@@ -1,7 +1,5 @@
 package org.magicmafia.ntm.neko_task_manager.controller.projectmanagement;
 
-import org.magicmafia.ntm.neko_task_manager.controller.employeemanagement.EditEmployeeView2Controller;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,7 +27,7 @@ public class EditProjectViewController {
         }else {
             int oldProjectIDInt = Integer.parseInt(oldProjectIDText);
             try {
-                EditEmployeeView2Controller.OldEmployeeIDInt = oldProjectIDInt;
+                EditProjectView2Controller.OldProjectIDInt = oldProjectIDInt;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/edit-project-2-view.fxml"));
                 Parent root = fxmlLoader.load();
 

@@ -114,6 +114,8 @@ public class ProjectManagementViewController{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/edit-project-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage editProjectButton = new Stage();
+            EditProjectViewController controller = fxmlLoader.getController();
+            controller.setProjectManagementViewController(this);
             editProjectButton.setTitle("Main Menu");
             editProjectButton.setScene(new Scene(root));
             editProjectButton.show();
@@ -129,6 +131,8 @@ public class ProjectManagementViewController{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/delete-project-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage deleteProjectButton = new Stage();
+            DeleteProjectViewController controller = fxmlLoader.getController();
+            controller.setProjectManagementViewController(this);
             deleteProjectButton.setTitle("Main Menu");
             deleteProjectButton.setScene(new Scene(root));
             deleteProjectButton.show();
