@@ -201,7 +201,7 @@ public class ProjectManagementViewController{
         try {
             Stage stage = (Stage) backButton.getScene().getWindow();
             stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/project-management-view/main-menu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/magicmafia/ntm/neko_task_manager/main-menu.fxml"));
             Parent root = fxmlLoader.load();
             Stage backButton = new Stage();
             backButton.setTitle("Main Menu");
