@@ -69,6 +69,7 @@ public class ProjectManagementViewController{
 
     @FXML
     public void UpdateProjectInfo() {
+        projectList.clear();
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "SELECT ProjectName, ProjectID, Deadline, Tasks, Employees FROM Projects";
         try (Connection conn = DriverManager.getConnection(url);
