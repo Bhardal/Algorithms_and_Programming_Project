@@ -4,10 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import org.magicmafia.ntm.neko_task_manager.DatabaseManagement;
 
 public class MainMenuController {
     @FXML
@@ -49,8 +52,17 @@ public class MainMenuController {
 
 
     @FXML
+    public void onResetButtonClick(){
+        DatabaseManagement.TablesDrop();
+        DatabaseManagement.TablesCreate();
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setContentText("Database reset.");
+        a.show();
+    }
+
+
+    @FXML
     public void onExitButtonClick(){
         Stage stage = (Stage) projectManagementButton.getScene().getWindow();
         stage.close();
     }
-}
