@@ -34,23 +34,35 @@ public class CreateEmployeeViewController {
             a.setContentText("Please enter a correct employee name.");
             a.show();
         }else {
-            int employeeIDInt = Integer.parseInt(employeeIDText);
-
-            String url = "jdbc:sqlite:mydatabase.db";
-            String sql = "INSERT INTO Employees(name, EmployeeID) VALUES(?, ?)";
-            try (Connection conn = DriverManager.getConnection(url);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setString(1, employeeNameText);
-                pstmt.setInt(2, employeeIDInt);
-                pstmt.executeUpdate();
-                System.out.println("Data inserted.");
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
+            Boolean flag = true;
+            try {
+                int employeeIDInt = Integer.parseInt(employeeIDText);
             }
-            employeeManagementViewController.UpdateEmployeeInfo();
+            catch (Exception e) {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("Please enter a correct employee ID.");
+                a.show();
+                flag = false;
+            }
+            if (flag) {
+                int employeeIDInt = Integer.parseInt(employeeIDText);
 
-            Stage stage = (Stage) closeButton.getScene().getWindow();
-            stage.close();
+                String url = "jdbc:sqlite:mydatabase.db";
+                String sql = "INSERT INTO Employees(name, EmployeeID) VALUES(?, ?)";
+                try (Connection conn = DriverManager.getConnection(url);
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, employeeNameText);
+                    pstmt.setInt(2, employeeIDInt);
+                    pstmt.executeUpdate();
+                    System.out.println("Data inserted.");
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+                employeeManagementViewController.UpdateEmployeeInfo();
+
+                Stage stage = (Stage) closeButton.getScene().getWindow();
+                stage.close();
+            }
         }
     }
 
