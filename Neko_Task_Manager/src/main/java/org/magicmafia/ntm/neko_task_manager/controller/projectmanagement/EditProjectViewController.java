@@ -54,8 +54,8 @@ public class EditProjectViewController {
         this.projectManagementViewController = projectManagementViewController;
     }
 
-    public void updateProjectInfo() {
-        projectManagementViewController.updateProjectInfo();
+    public void UpdateProjectInfo() {
+        projectManagementViewController.UpdateProjectInfo();
     }
 
 }

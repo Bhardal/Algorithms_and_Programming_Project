@@ -63,14 +63,14 @@ public class ProjectManagementViewController{
         projectEmployeesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Employees"));
         projectTasksTableColumn.setCellValueFactory(new PropertyValueFactory<>("Tasks"));
         projectTableView.setItems(projectList);
-        updateProjectInfo();
+        UpdateProjectInfo();
     }
 
 
     @FXML
-    public void updateProjectInfo() {
+    public void UpdateProjectInfo() {
         String url = "jdbc:sqlite:mydatabase.db";
-        String sql = "SELECT ProjectName, ProjectID, Deadline FROM Projects";
+        String sql = "SELECT ProjectName, ProjectID, Deadline, Tasks, Employees FROM Projects";
         try (Connection conn = DriverManager.getConnection(url);
              Statement pstmt = conn.createStatement();
              ResultSet rs =  pstmt.executeQuery(sql)){
@@ -79,7 +79,8 @@ public class ProjectManagementViewController{
                 int projectIDTemp = rs.getInt("ProjectID");
                 Date deadline = rs.getDate("Deadline");
                 String tasks = rs.getString("Tasks");
-                Project project = new Project(projectIDTemp, name, deadline, tasks);
+                String employees = rs.getString("Employees");
+                Project project = new Project(projectIDTemp, name, deadline, employees, tasks);
                 projectList.add(project);
             }
         } catch (SQLException e) {

@@ -4,31 +4,37 @@ import java.sql.Date;
 
 
 public class Project {
-    private String projectName;
-    private int projectID;
-    private Date deadlines;
-    private String tasks;
+    private String ProjectName;
+    private int ProjectID;
+    private Date Deadline;
+    private String Tasks;
+    private String Employees;
 
-    public Project(int projectID, String projectName, Date deadlines, String tasks) {
-        this.projectName = projectName;
-        this.projectID = projectID;
-        this.deadlines = deadlines;
-        this.tasks = tasks;
+    public Project(int ProjectID, String ProjectName, Date Deadline, String Employees , String Tasks) {
+        this.ProjectName = ProjectName;
+        this.ProjectID = ProjectID;
+        this.Deadline = Deadline;
+        this.Tasks = Tasks;
+        this.Employees = Employees;
     }
 
-    public Integer getProjectID() {
-        return projectID;
+    public String getProjectName() {
+        return ProjectName;
     }
 
-    public String getName() {
-        return projectName;
+    public int getProjectID() {
+        return ProjectID;
     }
 
     public Date getDeadline() {
-        return deadlines;
+        return Deadline;
     }
 
     public String getTasks() {
-        return tasks;
+        return Tasks;
+    }
+
+    public String getEmployees() {
+        return Employees;
     }
 }

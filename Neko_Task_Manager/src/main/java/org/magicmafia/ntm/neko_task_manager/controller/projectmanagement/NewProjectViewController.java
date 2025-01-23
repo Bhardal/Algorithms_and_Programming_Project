@@ -62,7 +62,7 @@ public class NewProjectViewController {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-            projectManagementViewController.updateProjectInfo();
+            projectManagementViewController.UpdateProjectInfo();
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();
         }

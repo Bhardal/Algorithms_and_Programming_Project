@@ -1,5 +1,9 @@
 package org.magicmafia.ntm.neko_task_manager.controller;
 
+import java.io.IOException;
+
+import org.magicmafia.ntm.neko_task_manager.DatabaseManagement;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,18 +12,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-import org.magicmafia.ntm.neko_task_manager.DatabaseManagement;
-
 public class MainMenuController {
     @FXML
     public Button projectManagementButton;
     @FXML
     public Button employeeManagementButton;
+    @FXML
+    public Button resetButton;
 
     @FXML
-    public void onProjectManagementViewButtonClick(){
+    public void onProjectManagementViewButtonClick() {
         try {
             Stage stage = (Stage) projectManagementButton.getScene().getWindow();
             stage.close();
@@ -35,7 +37,7 @@ public class MainMenuController {
     }
 
     @FXML
-    public void onEmployeeManagementViewButtonClick(){
+    public void onEmployeeManagementViewButtonClick() {
         try {
             Stage stage = (Stage) employeeManagementButton.getScene().getWindow();
             stage.close();
@@ -52,7 +54,7 @@ public class MainMenuController {
 
 
     @FXML
-    public void onResetButtonClick(){
+    public void onResetButtonClick() {
         DatabaseManagement.TablesDrop();
         DatabaseManagement.TablesCreate();
         Alert a = new Alert(Alert.AlertType.INFORMATION);
@@ -62,7 +64,8 @@ public class MainMenuController {
 
 
     @FXML
-    public void onExitButtonClick(){
+    public void onExitButtonClick() {
         Stage stage = (Stage) projectManagementButton.getScene().getWindow();
         stage.close();
     }
+}
