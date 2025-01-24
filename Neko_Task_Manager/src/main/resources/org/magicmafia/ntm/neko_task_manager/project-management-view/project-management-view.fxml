@@ -70,7 +70,7 @@
                                  <children>
                                     <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="1080.0">
                                        <children>
-                                          <VBox fx:id="todoVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
+                                          <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="To-Do" textAlignment="CENTER" textFill="#071e47">
                                                    <font>
@@ -80,9 +80,14 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                 </Label>
+                                                <VBox fx:id="todoVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
                                           </VBox>
-                                          <VBox fx:id="inProgressVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
+                                          <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="In Progress" textAlignment="CENTER" textFill="#071e47">
                                                    <font>
@@ -92,9 +97,14 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                 </Label>
+                                                <VBox fx:id="inProgressVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
                                           </VBox>
-                                          <VBox fx:id="doneVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
+                                          <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="Done" textAlignment="CENTER" textFill="#071e47">
                                                    <font>
@@ -104,9 +114,14 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                 </Label>
+                                                <VBox fx:id="doneVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
                                           </VBox>
-                                          <VBox fx:id="discontinuedVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
+                                          <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="200.0" style="-fx-border-style: solid solid hidden hidden; -fx-border-color: #071e47;">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="BOTTOM" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" style="-fx-border-color: #071e47; -fx-border-style: hidden hidden solid hidden;" text="Discontinued" textAlignment="CENTER" textFill="#071e47">
                                                    <font>
@@ -116,6 +131,11 @@
                                                       <Insets />
                                                    </VBox.margin>
                                                 </Label>
+                                                <VBox fx:id="discontinuedVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
                                           </VBox>
                                           <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="280.0" style="-fx-border-style: solid hidden hidden solid; -fx-border-color: #071e47;">
@@ -130,7 +150,7 @@
                                                 </Label>
                                                 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="280.0" tabClosingPolicy="UNAVAILABLE">
                                                   <tabs>
-                                                    <Tab fx:id="createTaskView" text="Create Task">
+                                                    <Tab fx:id="createTaskView" onSelectionChanged="#onCreateTaskViewClick" text="Create Task">
                                                          <content>
                                                             <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="280.0">
                                                                <children>
@@ -144,7 +164,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldProjectID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldNewProjectID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -160,7 +180,7 @@
                                                                               <Insets />
                                                                            </VBox.margin>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskID1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldNewTaskID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -173,7 +193,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <DatePicker fx:id="datePickerTaskDeadline1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <DatePicker fx:id="datePickerNewTaskDeadline" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -186,7 +206,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskPriority1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldNewTaskPriority" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -199,7 +219,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <Label fx:id="labelTaskStatus1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" text="#Status#">
+                                                                        <Label fx:id="labelNewTaskStatus" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" text="To-Do">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -216,7 +236,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskEmployee1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldNewTaskEmployee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0">
@@ -229,7 +249,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskDescription1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldNewTaskDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0">
@@ -242,14 +262,14 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskComment1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldNewTaskComment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
-                                                                  <Button fx:id="buttonActionTask1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Create Task" />
+                                                                  <Button fx:id="buttonNewTask" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButtonNewTaskClick" prefHeight="25.0" prefWidth="250.0" text="Create Task" />
                                                                </children>
                                                             </VBox>
                                                          </content></Tab>
-                                                    <Tab fx:id="editTaskView" text="Edit Task">
+                                                    <Tab fx:id="editTaskView" onSelectionChanged="#onEditTaskViewClick" text="Edit Task">
                                                          <content>
                                                             <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="280.0">
                                                                <children>
@@ -263,7 +283,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldProjectID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldEditProjectID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -279,7 +299,7 @@
                                                                               <Insets />
                                                                            </VBox.margin>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldEditTaskID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -292,7 +312,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <DatePicker fx:id="datePickerTaskDeadline" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <DatePicker fx:id="datePickerEditTaskDeadline" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -305,7 +325,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskPriority" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldEditTaskPriority" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -318,7 +338,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <Label fx:id="labelTaskStatus" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" text="#Status#">
+                                                                        <Label fx:id="labelEditTaskStatus" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
                                                                            <font>
                                                                               <Font name="Arial" size="15.0" />
                                                                            </font>
@@ -335,7 +355,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskEmployee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldEditTaskEmployee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0">
@@ -348,7 +368,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldEditTaskDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0">
@@ -361,15 +381,15 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskComment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldEditTaskComment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
-                                                                  <Button fx:id="buttonActionTask" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Edit Task" />
+                                                                  <Button fx:id="buttonEditTask" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButtonEditTaskClick" prefHeight="25.0" prefWidth="250.0" text="Edit Task" />
                                                                </children>
                                                             </VBox>
                                                          </content>
                                                     </Tab>
-                                                      <Tab fx:id="deleteTaskView" text="Delete Task">
+                                                      <Tab fx:id="deleteTaskView" onSelectionChanged="#onDeleteTaskViewClick" text="Delete Task">
                                                          <content>
                                                             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="280.0">
                                                                <children>
@@ -383,7 +403,7 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldProjectID2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldDeleteProjectID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">
@@ -399,10 +419,10 @@
                                                                               <Insets />
                                                                            </VBox.margin>
                                                                         </Label>
-                                                                        <TextField fx:id="textFieldTaskID2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                                                                        <TextField fx:id="textFieldDeleteTaskID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" />
                                                                      </children>
                                                                   </VBox>
-                                                                  <Button fx:id="buttonActionTask2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Delete Task">
+                                                                  <Button fx:id="buttonDeleteTask" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onButtonDeleteTaskClick" prefHeight="25.0" prefWidth="250.0" text="Delete Task">
                                                                      <VBox.margin>
                                                                         <Insets top="150.0" />
                                                                      </VBox.margin>

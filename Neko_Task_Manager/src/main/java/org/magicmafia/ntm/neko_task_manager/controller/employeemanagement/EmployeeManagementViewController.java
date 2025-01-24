@@ -63,21 +63,20 @@ public class EmployeeManagementViewController {
             System.out.println(e.getMessage());
         }
 
-    //    String sql2;
-    //    for (String workedProjectsList : projectIDs) {
-    //        String[] workedProjectIDs = workedProjectsList.split(",");
-    //        for (String id : workedProjectIDs) {
-    //            sql2 = "SELECT ProjectName FROM Projects WHERE ProjectID = " + id + ";";
-    //            try (Connection conn = DriverManager.getConnection(url);
-    //                 Statement pstmt = conn.createStatement();
-    //                 ResultSet rs =  pstmt.executeQuery(sql2)){
-    //                projectNames.add(rs.getString("ProjectName"));
-    //            } catch (SQLException e) {
-    //                System.out.println(e.getMessage());
-    //            }
-    //        }
-    //    }
-        // ??? Regarde pour faire en sorte de parse les valeurs de la liste dans le tableau
+       String sql2;
+       for (String workedProjectsList : projectIDs) {
+           String[] workedProjectIDs = workedProjectsList.split(",");
+           for (String id : workedProjectIDs) {
+               sql2 = "SELECT ProjectName FROM Projects WHERE ProjectID = " + id + ";";
+               try (Connection conn = DriverManager.getConnection(url);
+                    Statement pstmt = conn.createStatement();
+                    ResultSet rs =  pstmt.executeQuery(sql2)){
+                   projectNames.add(rs.getString("ProjectName"));
+               } catch (SQLException e) {
+                   System.out.println(e.getMessage());
+               }
+           }
+       }
         employeeTableView.setItems(employeeInfos);
     }
 

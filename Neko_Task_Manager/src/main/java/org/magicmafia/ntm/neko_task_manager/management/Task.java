@@ -1,23 +1,27 @@
 package org.magicmafia.ntm.neko_task_manager.management;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class Task {
     public int priority;
     public String status;
-    public LocalDateTime dueDate;
+    public Date dueDate;
     public String comment;
     public String description;
     public int taskID;
+    public int projectID;
+    public int employeeID;
 
 
-    public Task(int taskID, int priority, String status, LocalDateTime dueDate, String comment, String description) {
+    public Task(int taskID, int priority, String status, Date dueDate, String comment, String description, int projectID, int employeeID) {
         this.taskID = taskID;
         this.priority = priority;
         this.status = status;
         this.dueDate = dueDate;
         this.comment = comment;
         this.description = description;
+        this.projectID = projectID;
+        this.employeeID = employeeID;
     }
 
     public int getPriority() {
@@ -28,7 +32,7 @@ public class Task {
         return status;
     }
 
-    public LocalDateTime getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
@@ -44,5 +48,15 @@ public class Task {
         return taskID;
     }
 
+    public int getProjectID() {
+        return projectID;
+    }
 
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
