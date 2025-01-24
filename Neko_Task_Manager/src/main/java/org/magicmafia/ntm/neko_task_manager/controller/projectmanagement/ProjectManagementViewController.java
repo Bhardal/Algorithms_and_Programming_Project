@@ -19,15 +19,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -73,8 +74,6 @@ public class ProjectManagementViewController{
     @FXML
     public TextField textFieldNewTaskPriority, textFieldEditTaskPriority;
     @FXML
-    public Label labelNewTaskStatus, labelEditTaskStatus;
-    @FXML
     public TextField textFieldNewTaskEmployee, textFieldEditTaskEmployee;
     @FXML
     public TextField textFieldNewTaskDescription, textFieldEditTaskDescription;
@@ -82,6 +81,10 @@ public class ProjectManagementViewController{
     public TextField textFieldNewTaskComment, textFieldEditTaskComment;
     @FXML
     public Button buttonNewTask, buttonEditTask, buttonDeleteTask;
+    @FXMl
+    public MenuButton statusMenuButton;
+    @FXML
+    public MenuItem toDoMenuItem, inProgressMenuItem, doneMenuItem, discontinuedMenuItem;
 
     public ArrayList<Task> listTasks = new ArrayList<>();
 
@@ -91,6 +94,13 @@ public class ProjectManagementViewController{
         projectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectName"));
         projectDeadlineTableColumn.setCellValueFactory(new PropertyValueFactory<>("Deadline"));
         projectTableView.setItems(projectList);
+
+        // MenuItem toDoMenuItem = new MenuItem("To Do");
+        // MenuItem inProgressMenuItem = new MenuItem("In Progress");
+        // MenuItem doneMenuItem = new MenuItem("Done");
+        // MenuItem discontinuedMenuItem = new MenuItem("Discontinued");
+        // statusMenuButton.getItems().addAll(toDoMenuItem, inProgressMenuItem, doneMenuItem, discontinuedMenuItem);
+
         UpdateProjectInfo();
         UpdateTaskList();
     }
@@ -205,6 +215,7 @@ public class ProjectManagementViewController{
 
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "INSERT INTO Tasks(TaskID, Priority, Status, Deadline, Comment, Description, ProjectID, EmployeeID) VALUES(?, ?, ?, ?, ?, ?, (SELECT ProjectID FROM Projects WHERE ProjectID = ?), (SELECT EmployeeID FROM Employees WHERE EmployeeID = ?))";
+        Boolean isUniqueID = true;
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, taskIDInt); 
@@ -219,8 +230,17 @@ public class ProjectManagementViewController{
             System.out.println("Data inserted.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            if (e.getMessage().contains("UNIQUE constraint failed")) {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("Task ID already exists.");
+                a.show();
+                isUniqueID = false;
+            }
         }
-        UpdateTaskList();
+
+        if (isUniqueID) {
+            UpdateTaskList();
+        }
     }
 
 
@@ -232,12 +252,16 @@ public class ProjectManagementViewController{
         int taskIDInt = Integer.parseInt(taskIDText);
         String priorityText = textFieldEditTaskPriority.getText();
         int priorityInt = Integer.parseInt(priorityText);
-        String statusText = labelEditTaskStatus.getText();
         Date deadlineDate = Date.valueOf(datePickerEditTaskDeadline.getValue());
         String commentText = textFieldEditTaskComment.getText();
         String descriptionText = textFieldEditTaskDescription.getText();
         String selectedEmployeeIDText = textFieldEditTaskEmployee.getText();
         int selectedEmployeeIDInt = Integer.parseInt(selectedEmployeeIDText);
+        String statusText = "";
+        toDoMenuItem.setOnAction(event -> statusText = "To Do");
+        inProgressMenuItem.setOnAction(event -> statusText = "In Progress");
+        doneMenuItem.setOnAction(event -> statusText = "Done");
+        discontinuedMenuItem.setOnAction(event -> statusText = "Discontinued");
 
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "DELETE FROM Tasks WHERE TaskID = ?";
@@ -359,7 +383,6 @@ public class ProjectManagementViewController{
         textFieldNewTaskID.clear();
         datePickerNewTaskDeadline.setValue(null);
         textFieldNewTaskPriority.clear();
-        labelNewTaskStatus.setText("To Do");
         textFieldNewTaskComment.clear();
         textFieldNewTaskDescription.clear();
         textFieldNewTaskEmployee.clear();

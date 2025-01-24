@@ -45,6 +45,9 @@ public class EditProjectViewController {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
             }
+            
+            Stage stage = (Stage) OKButton.getScene().getWindow();
+            stage.close();
         }
     }
 

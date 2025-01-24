@@ -52,6 +52,7 @@ public class NewProjectViewController {
 
             String url = "jdbc:sqlite:mydatabase.db";
             String sql = "INSERT INTO Projects(ProjectName, ProjectID, Deadline) VALUES(?, ?, ?)";
+            Boolean isUniqueID = true;
             try (Connection conn = DriverManager.getConnection(url);
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, projectNameText);
@@ -61,10 +62,18 @@ public class NewProjectViewController {
                 System.out.println("Data inserted.");
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
+                if (e.getMessage().contains("UNIQUE constraint failed")) {
+                    Alert a = new Alert(Alert.AlertType.ERROR);
+                    a.setContentText("Project ID already exists.");
+                    a.show();
+                    isUniqueID = false;
+                }
             }
-            projectManagementViewController.UpdateProjectInfo();
-            Stage stage = (Stage) closeButton.getScene().getWindow();
-            stage.close();
+            if (isUniqueID) {
+                projectManagementViewController.UpdateProjectInfo();
+                Stage stage = (Stage) closeButton.getScene().getWindow();
+                stage.close();
+            }
         }
     }
 }
