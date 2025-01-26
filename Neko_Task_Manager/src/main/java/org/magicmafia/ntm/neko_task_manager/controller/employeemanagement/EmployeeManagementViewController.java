@@ -48,15 +48,35 @@ public class EmployeeManagementViewController {
     public void UpdateEmployeeInfo() {
         employeeInfos.clear();
         String url = "jdbc:sqlite:mydatabase.db";
-        String sql = "SELECT Name, EmployeeID, Projects FROM Employees;";
+        String sql = "SELECT Name, EmployeeID FROM Employees;";
+        String sql1, sql2;
         try (Connection conn = DriverManager.getConnection(url);
              Statement pstmt = conn.createStatement();
              ResultSet rs =  pstmt.executeQuery(sql)){
             while (rs.next()) {
                 int employeeID = rs.getInt("EmployeeID");
                 String name = rs.getString("Name");
-                String projectID = rs.getString("Projects");
-                Employee employee = new Employee(employeeID, name, projectID);
+                Employee employee = new Employee(employeeID, name);
+                
+                sql1 = "SELECT ProjectID FROM Tasks WHERE EmployeeID = "+employeeID+";";
+                try (Statement pstmt1 = conn.createStatement();
+                    ResultSet rs1 =  pstmt1.executeQuery(sql1)) {
+                    while (rs1.next()) {
+                        int projectID = rs1.getInt("ProjectID");
+                        sql2 = "SELECT ProjectName FROM Projects WHERE ProjectID = " + projectID + ";";
+                        try (Statement pstmt2 = conn.createStatement();
+                            ResultSet rs2 =  pstmt2.executeQuery(sql2)) {
+                            while (rs2.next()) {
+                                String projectName = rs2.getString("ProjectName");
+                                employee.addProject(projectName);
+                            }
+                        } catch (SQLException e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
                 employeeInfos.add(employee);
             }
         } catch (SQLException e) {

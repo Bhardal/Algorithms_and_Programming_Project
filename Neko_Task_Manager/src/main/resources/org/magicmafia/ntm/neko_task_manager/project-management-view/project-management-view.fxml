@@ -8,11 +8,13 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -339,7 +341,17 @@
                                                                               <Insets left="10.0" />
                                                                            </padding>
                                                                         </Label>
-                                                                        <MenuButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Status Selector" />
+                                                                        <MenuButton fx:id="statusMenuButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Status Selector">
+                                                                           <items>
+                                                                              <RadioMenuItem fx:id="toDoMenuItem" mnemonicParsing="false" text="To-Do">
+                                                                                 <toggleGroup>
+                                                                                    <ToggleGroup fx:id="statusToggleGroup" />
+                                                                                 </toggleGroup>
+                                                                              </RadioMenuItem>
+                                                                              <RadioMenuItem fx:id="inProgressMenuItem" mnemonicParsing="false" text="In Progress" toggleGroup="$statusToggleGroup" />
+                                                                              <RadioMenuItem fx:id="doneMenuItem" mnemonicParsing="false" text="Done" toggleGroup="$statusToggleGroup" />
+                                                                              <RadioMenuItem fx:id="discontinuedMenuItem" mnemonicParsing="false" text="Discontinued" toggleGroup="$statusToggleGroup" />
+                                                                           </items></MenuButton>
                                                                      </children>
                                                                   </VBox>
                                                                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0">

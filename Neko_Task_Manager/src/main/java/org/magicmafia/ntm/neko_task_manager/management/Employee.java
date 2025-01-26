@@ -1,13 +1,17 @@
 package org.magicmafia.ntm.neko_task_manager.management;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class Employee {
     private Integer employeeID;
     private String name;
-    private String projects;
+    private Set<String> projects;
 
-    public Employee(Integer employeeID, String name, String projects) {
+    public Employee(Integer employeeID, String name) {
         this.employeeID = employeeID;
         this.name = name;
-        this.projects = projects;
+        this.projects = new HashSet<>();
     }
     
 
@@ -19,18 +23,8 @@ public class Employee {
     }
 
 
-    public void setEmployeeID(Integer employeeID) {
-        this.employeeID = employeeID;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public void setProjectHistory(String projects) {
-        this.projects = projects;
+    public void addProject(String project) {
+        this.projects.add(project);
     }
 
 
@@ -44,7 +38,7 @@ public class Employee {
     }
 
 
-    public String getProjects() {
+    public Set<String> getProjects() {
         return projects;
     }
 }

@@ -22,13 +22,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -81,10 +83,12 @@ public class ProjectManagementViewController{
     public TextField textFieldNewTaskComment, textFieldEditTaskComment;
     @FXML
     public Button buttonNewTask, buttonEditTask, buttonDeleteTask;
-    @FXMl
+    @FXML
     public MenuButton statusMenuButton;
     @FXML
-    public MenuItem toDoMenuItem, inProgressMenuItem, doneMenuItem, discontinuedMenuItem;
+    public RadioMenuItem toDoMenuItem, inProgressMenuItem, doneMenuItem, discontinuedMenuItem;
+    @FXML
+    public ToggleGroup statusToggleGroup;
 
     public ArrayList<Task> listTasks = new ArrayList<>();
 
@@ -94,12 +98,6 @@ public class ProjectManagementViewController{
         projectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProjectName"));
         projectDeadlineTableColumn.setCellValueFactory(new PropertyValueFactory<>("Deadline"));
         projectTableView.setItems(projectList);
-
-        // MenuItem toDoMenuItem = new MenuItem("To Do");
-        // MenuItem inProgressMenuItem = new MenuItem("In Progress");
-        // MenuItem doneMenuItem = new MenuItem("Done");
-        // MenuItem discontinuedMenuItem = new MenuItem("Discontinued");
-        // statusMenuButton.getItems().addAll(toDoMenuItem, inProgressMenuItem, doneMenuItem, discontinuedMenuItem);
 
         UpdateProjectInfo();
         UpdateTaskList();
@@ -257,11 +255,17 @@ public class ProjectManagementViewController{
         String descriptionText = textFieldEditTaskDescription.getText();
         String selectedEmployeeIDText = textFieldEditTaskEmployee.getText();
         int selectedEmployeeIDInt = Integer.parseInt(selectedEmployeeIDText);
+
         String statusText = "";
-        toDoMenuItem.setOnAction(event -> statusText = "To Do");
-        inProgressMenuItem.setOnAction(event -> statusText = "In Progress");
-        doneMenuItem.setOnAction(event -> statusText = "Done");
-        discontinuedMenuItem.setOnAction(event -> statusText = "Discontinued");
+        RadioMenuItem selectedMenuItem = (RadioMenuItem) statusToggleGroup.getSelectedToggle();
+        if (selectedMenuItem != null) {
+            statusText = selectedMenuItem.getText();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Please select a correct status.");
+            alert.show();
+            return;
+        }
 
         String url = "jdbc:sqlite:mydatabase.db";
         String sql = "DELETE FROM Tasks WHERE TaskID = ?";
@@ -368,7 +372,6 @@ public class ProjectManagementViewController{
         textFieldEditTaskID.setText(String.valueOf(task.getTaskID()));
         datePickerEditTaskDeadline.setValue(task.getDueDate().toLocalDate());
         textFieldEditTaskPriority.setText(String.valueOf(task.getPriority()));
-        labelEditTaskStatus.setText(task.getStatus());
         textFieldEditTaskComment.setText(task.getComment());
         textFieldEditTaskDescription.setText(task.getDescription());
         textFieldEditTaskEmployee.setText(String.valueOf(task.getEmployeeID()));
@@ -394,7 +397,7 @@ public class ProjectManagementViewController{
         textFieldEditTaskID.clear();
         datePickerEditTaskDeadline.setValue(null);
         textFieldEditTaskPriority.clear();
-        labelEditTaskStatus.setText("");
+        statusToggleGroup.selectToggle(null);
         textFieldEditTaskComment.clear();
         textFieldEditTaskDescription.clear();
         textFieldEditTaskEmployee.clear();
